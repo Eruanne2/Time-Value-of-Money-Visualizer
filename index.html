@@ -5,12 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Value of Money Visualizer</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
+    <link rel="shortcut icon" href="#">
 </head>
 
 <body class="container">
     <h1>Time Value of Money Visualizer</h1>
+
+    <main>
+      <form>
+        <label for='start-balance-input'>Beginning Balance</label>
+        <input id='start-balance-input' type='text'/>
+
+        <label for='term-input'>Term</label>
+        <div id='term-input'>
+          <input id='term-input' type='text'/>
+          <select>
+            <option value='year'>years</option>
+            <option value='month'>months</option>
+            <option value='day'>days</option>
+          </select>
+        </div>
+
+        <label for='interest-input'>Annual Interest Rate</label>
+        <input id='interest-input' type='text'/>
+
+        <label for='compounds-select'>Interest Compounds</label>
+        <select id='compounds-select'>
+          <option value='year'>years</option>
+          <option value='month'>months</option>
+          <option value='day'>days</option>
+        </select>
+
+        <label for='payment-input'>Monthly Payments</label>
+        <input type='text'/>
+
+        <label for='end-balance-input'>Ending Balance</label>
+        <input id='end-balance-input' type='text'/>
+
+        <button id='submit-btn'>CLEAR</button>
+      </form>
+      
+      <section className='graph-container'>
+        
+      </section>
+      
+      <aside>
+        <h1>Explore</h1>
+        <h2>How much does it really cost you?</h2>
+        <ul>
+          <li>a Starbucks drink</li>
+          <li>dinner at Chipotle</li>
+          <li>one SuperBowl ticket</li>
+        </ul>
+        <h2>How long would it take to pay off?</h2>
+        <ul>
+          <li>a 2021 Bugatti</li>
+          <li>a prive island</li>
+          <li>a medical degree</li>
+          <li>"The One" Bel Aire mansion</li>
+        </ul>
+      </aside>
+    </main>
+      
     <script type="text/javascript" src="app.js"></script>
 </body>
 
