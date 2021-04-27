@@ -17,8 +17,12 @@
 
     <main>
       <form>
-        <label for='start-balance-input'>Beginning Balance</label>
-        <input id='start-balance-input' type='text'/>
+        <label for='current-value-input'>Current Value</label>
+        <div>
+          <input id='current-value-input' type='text'/>
+          <button id='current-value-go' class='go'>GO >></button>
+          <!--add absolutely positioned info box (display on hover)-->
+        </div>
 
         <label for='term-input'>Term</label>
         <div id='term-input-holder'>
@@ -28,25 +32,41 @@
             <option value='months'>months</option>
             <option value='days'>days</option>
           </select>
+          <button id='term-go' class='go'>GO >></button>
+          <!--add absolutely positioned info box (display on hover)-->
         </div>
 
         <label for='interest-input'>Annual Interest Rate</label>
-        <input id='interest-input' type='text'/>
+        <div>
+          <input id='interest-input' type='text'/>
+          <button id='interest-go' class='go'>GO >></button>
+          <!--add absolutely positioned info box (display on hover)-->
+        </div>
 
         <label for='compounds-select'>Interest Compounds</label>
-        <select id='compounds-select'>
-          <option value='yearly'>yearly</option>
-          <option value='monthly'>monthly</option>
-          <option value='daily'>daily</option>
-        </select>
+        <div>
+          <select id='compounds-select'>
+            <option value='yearly'>yearly</option>
+            <option value='monthly'>monthly</option>
+            <option value='daily'>daily</option>
+          </select>
+        </div>
 
         <label for='payment-input'>Monthly Payment Amount</label>
-        <input id='payment-input' type='text'/>
+        <div>
+          <input id='payment-input' type='text'/>
+          <button id='payment-go' class='go'>GO >></button>
+          <!--add absolutely positioned info box (display on hover)-->
+        </div>
 
-        <label for='end-balance-input'>Ending Balance</label>
-        <input id='end-balance-input' type='text'/>
+        <label for='future-value-input'>Future Value</label>
+        <div>
+          <input id='future-value-input' type='text'/>
+          <button id='future-value-go' class='go'>GO >></button>
+          <!--add absolutely positioned info box (display on hover)-->
+        </div>
 
-        <button id='submit-btn'>CLEAR</button>
+        <button id='clear-btn'>CLEAR</button>
       </form>
       
       <section class='graph-container'>

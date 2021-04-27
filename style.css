@@ -26,11 +26,17 @@ form {
   form input, form select {
     border-radius: 5px;
     border: 1px solid #253C5B; }
-  form #term-input {
+  form #term-text-input {
     width: 60px; }
   form select {
     font-family: "Hind Siliguri", sans-serif; }
-  form button {
+  form .go {
+    background: transparent;
+    border: none;
+    color: #1990FF;
+    font-weight: 700;
+    font-family: "Hind Siliguri", sans-serif; }
+  form #clear-btn {
     background: transparent;
     font-family: "Hind Siliguri", sans-serif;
     font-weight: 700;
@@ -53,6 +59,6 @@ form {
 aside {
   float: right;
   width: 20%;
-  margin: 0 50px 0 100px; }
+  margin: 0 50px; }
 
 /*# sourceMappingURL=style.css.map */

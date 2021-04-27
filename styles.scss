@@ -52,7 +52,15 @@ form {
     font-family: $font;
   }
 
-  button {
+  .go {
+    background: transparent;
+    border: none;
+    color: $main-blue;
+    font-weight: 700;
+    font-family: $font;
+  }
+
+  #clear-btn {
     background: transparent;
     font-family: $font;
     font-weight: 700;
