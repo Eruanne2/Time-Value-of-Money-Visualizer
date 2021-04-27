@@ -19,7 +19,7 @@ const endBalance = 0;
 
 // EVENT HANDLERS
 const handleUpdate = field => {
-  return e => field = e.currentTarget.value;
+  return e => { console.log(e.currentTarget.value); field = e.currentTarget.value; }
 };
 
 const handleSubmit = e => {
@@ -33,7 +33,13 @@ const handleSubmit = e => {
 };
 
 // add event listeners
-startBalanceInput.addEventListener('change', e => handleUpdate('startBalance')); // is this correct??
+startBalanceInput.addEventListener('input', handleUpdate('startBalance'));
+termTextInput.addEventListener('input', handleUpdate('termLength'));
+termSelectInput.addEventListener('input', handleUpdate('termPeriod'));
+interestInput.addEventListener('input', handleUpdate('interestRate'));
+compoundsSelect.addEventListener('input', handleUpdate('compounds'));
+paymentInput.addEventListener('input', handleUpdate('paymentAmount'));
+endBalanceInput.addEventListener('input', handleUpdate('endBalance'));
 
 
 
