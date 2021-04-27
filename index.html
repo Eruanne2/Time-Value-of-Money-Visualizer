@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="#">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;700&display=swap" rel="stylesheet" type="text/css">
 </head>
 
 <body class="container">
@@ -25,33 +25,32 @@
 
     <main>
       <form>
-        <label for='current-value-input'>Current Value</label>
+        <label for='current-value-input'><span class='error hidden'>REQUIRED</span> Current Value</label>
         <div>
           <input id='current-value-input' type='text'/>
           <button id='current-value-go' class='go'>GO >></button>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
 
-        <label for='term-input'>Term</label>
+        <label for='term-input'><span class='error hidden'>REQUIRED</span> Term </label>
         <div id='term-input-holder'>
           <input id='term-text-input' type='text'/>
           <select id='term-select-input'>
             <option value='years'>years</option>
             <option value='months'>months</option>
-            <option value='days'>days</option>
           </select>
           <button id='term-go' class='go'>GO >></button>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
 
-        <label for='interest-input'>Annual Interest Rate</label>
+        <label for='interest-input'><span class='error hidden'>REQUIRED</span> Annual Interest Rate </label>
         <div>
           <input id='interest-input' type='text'/>
           <button id='interest-go' class='go'>GO >></button>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
 
-        <label for='compounds-select'>Interest Compounds</label>
+        <label for='compounds-select'> Interest Compounds </label>
         <div>
           <select id='compounds-select'>
             <option value='yearly'>yearly</option>
@@ -60,14 +59,14 @@
           </select>
         </div>
 
-        <label for='payment-input'>Monthly Payment Amount</label>
+        <label for='payment-input'><span class='error hidden'>REQUIRED</span> Monthly Payment Amount </label>
         <div>
           <input id='payment-input' type='text'/>
           <button id='payment-go' class='go'>GO >></button>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
 
-        <label for='future-value-input'>Future Value</label>
+        <label for='future-value-input'><span class='error hidden'>REQUIRED</span> Future Value </label>
         <div>
           <input id='future-value-input' type='text'/>
           <button id='future-value-go' class='go'>GO >></button>

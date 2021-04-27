@@ -12,6 +12,10 @@ html {
   background-color: $background-green;
 }
 
+.hidden {
+  display: none;
+}
+
 #main-header {
   text-align: center;
   font-size: 30px;
@@ -33,6 +37,12 @@ form {
   label {
     margin-top: 20px;
     margin-bottom: 2px;
+    font-weight: 500;
+
+    span.error {
+      color: rgb(197, 22, 22);
+      font-weight: 700;
+    }
   }
 
   input {

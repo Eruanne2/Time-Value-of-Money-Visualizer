@@ -24,17 +24,40 @@ let mockState = {
   futureValue: 0
 }
 
+let dataByMonth = {}; // { 1: { startingBalance: 1000, payments: 2500, interest: 482.34}, 2: {...}}
+
 
 // link inputs and values
 
 
 // EVENT HANDLERS
 const handleUpdate = field => {
-  return e => mockSate[field] = e.currentTarget.value;
+  return e => {
+    mockSate[field] = e.currentTarget.value;
+    if (mockState[field] !== '') e.currentTarget.classList.add('hidden'); 
+  }
 };
 
-const calculateCurrentValue = () => {
+
+/*
+FV = PV x [ 1 + (i / n) ] ^ (n x (t / 12)), where:
+
+FV = Future value of money
+PV = Present value of money
+i = interest rate
+n = number of compounding periods per year
+t = number of months
+*/
+
+// Assume a sum of $10,000 is invested for 1 year at 10% interest. 
+// Monthly Compounding: FV = $10,000 x [1 + (10% / 12)] ^ (12 x 1) = $11,047
+// Daily Compounding:   FV = $10,000 x [1 + (10% / 365)] ^ (365 x 1) = $11,052
+
+
+const calculateCurrentValue = e => {
+  console.log('inside calculatecurrentvalue')
   // check that the proper field are filled in - display errors
+  if (mockState['termLength'] === '') termTextInput.classList.remove('hidden');
 
   // calculate value and fill in field
 
@@ -42,19 +65,19 @@ const calculateCurrentValue = () => {
 };
 
 
-const calculateTermLength = () => {
+const calculateTermLength = e => {
 
 };
 
-const calculateInterestRate = () => {
+const calculateInterestRate = e => {
 
 };
 
-const calculatePaymentAmount = () => {
+const calculatePaymentAmount = e => {
 
 };
 
-const calculateFutureValue = () => {
+const calculateFutureValue = e => {
 
 };
 

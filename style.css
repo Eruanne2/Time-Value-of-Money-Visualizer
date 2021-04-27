@@ -3,6 +3,9 @@ html {
   color: #253C5B;
   background-color: #F0FFF0; }
 
+.hidden {
+  display: none; }
+
 #main-header {
   text-align: center;
   font-size: 30px;
@@ -20,7 +23,11 @@ form {
   align-items: flex-start; }
   form label {
     margin-top: 20px;
-    margin-bottom: 2px; }
+    margin-bottom: 2px;
+    font-weight: 500; }
+    form label span.error {
+      color: #c51616;
+      font-weight: 700; }
   form input {
     height: 23px; }
   form input, form select {
