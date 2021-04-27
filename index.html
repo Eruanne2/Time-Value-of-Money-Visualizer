@@ -22,8 +22,8 @@
 
         <label for='term-input'>Term</label>
         <div id='term-input-holder'>
-          <input id='term-input' type='text'/>
-          <select>
+          <input id='term-text-input' type='text'/>
+          <select id='term-select-input'>
             <option value='year'>years</option>
             <option value='month'>months</option>
             <option value='day'>days</option>
@@ -35,13 +35,13 @@
 
         <label for='compounds-select'>Interest Compounds</label>
         <select id='compounds-select'>
-          <option value='year'>years</option>
-          <option value='month'>months</option>
-          <option value='day'>days</option>
+          <option value='years'>years</option>
+          <option value='months'>months</option>
+          <option value='days'>days</option>
         </select>
 
         <label for='payment-input'>Monthly Payment Amount</label>
-        <input type='text'/>
+        <input id='payment-input' type='text'/>
 
         <label for='end-balance-input'>Ending Balance</label>
         <input id='end-balance-input' type='text'/>
