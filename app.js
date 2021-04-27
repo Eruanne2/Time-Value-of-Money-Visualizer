@@ -67,8 +67,10 @@ const calculateCurrentValue = e => {
   e.preventDefault();
   console.log('inside calculatecurrentvalue')
   // check that the proper field are filled in - display errors
-  debugger
-  if (e.currentTarget.value === '') errors["termLength"].classList.remove('hidden');
+  if (termTextInput.value === '') errors["termLength"].classList.remove('hidden');
+  if (interestInput.value === '') errors["interestRate"].classList.remove('hidden');
+  if (paymentInput.value === '') errors["paymentAmount"].classList.remove('hidden');
+  if (futureValueInput.value === '') errors["futureValue"].classList.remove('hidden');
 
   // calculate value and fill in field
 
@@ -94,7 +96,8 @@ const calculateFutureValue = e => {
 
 const handleClear = e => {
   e.preventDefault();
-
+  
+  Object.values(errors).forEach(err => err.classList.add('hidden'));
   currentValueInput.value = '';
   termTextInput.value = '';
   termSelectInput.value = 'years';
