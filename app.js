@@ -25,11 +25,12 @@ const errors = {
 // link inputs and values
 const getValuesFromInput = () => {
   return {
-    pv: (parseInt(presentValueInput.value)).toFixed(2),
-    fv: (parseInt(futureValueInput.value)).toFixed(2),
+    pv: parseInt(presentValueInput.value),
+    fv: parseInt(futureValueInput.value),
     i: (parseFloat(interestInput.value)).toFixed(2),
-    n: parseInt(termTextInput.value) * parseInt(termTextSelect.value),
-    pmt: (parseInt(paymentInput.value)).toFixed(2)
+    n: parseInt(compoundsSelect.value),
+    t: parseInt(termTextInput.value) * parseInt(termSelectInput.value), 
+    // pmt: (parseInt(paymentInput.value)).toFixed(2)
   };
 }
 
@@ -38,22 +39,21 @@ const getValuesFromInput = () => {
 
 const calculatePresentValue = e => {
   e.preventDefault();
-  
+
   // check that the proper field are filled in - display errors
   if (termTextInput.value === '') errors['termLength'].classList.remove('hidden');
   if (interestInput.value === '') errors['interestRate'].classList.remove('hidden');
   // if (paymentInput.value === '') errors['paymentAmount'].classList.remove('hidden');
   if (futureValueInput.value === '') errors['futureValue'].classList.remove('hidden');
 
-  // convert termLength to months and find compound periods
-  if (mockState['termPeriod'] === 'years') mockState['termLength'] = mockState['termLength'] * 12;
+  let vals = getValuesFromInput();
 
   // calculate missing value
   debugger
-  let numer = mockState['futureValue'];
-  let denom = (1 + (mockState['interestRate'] / mockState['compoundPeriods'])) ** (mockState['termLength'] * mockState['compoundPeriods'] / 12);
-  mockState['presentValue'] = (numer / denom).toFixed(2);
-  presentValueInput.value = mockState['presentValue'];
+  let numer = vals.fv;
+  let denom = (1 + (vals.i / vals.n)) ** (vals.n * vals.t / 12);
+  vals.pv = (numer / denom).toFixed(2);
+  presentValueInput.value = vals.pv;
 
   // trigger graph
   animateGraph();
@@ -134,17 +134,10 @@ const handleClear = e => {
 };
 
 // add event listeners
-presentValueInput.addEventListener('input', handleUpdate('presentValue'));
 presentValueGo.addEventListener('click', calculatePresentValue);
-termTextInput.addEventListener('input', handleUpdate('termLength'));
-termSelectInput.addEventListener('input', handleUpdate('termPeriod'));
 termGo.addEventListener('click', calculateTermLength);
-interestInput.addEventListener('input', handleUpdate('interestRate'));
 interestGo.addEventListener('click', calculateInterestRate);
-compoundsSelect.addEventListener('input', handleUpdate('compoundPeriods'));
-// paymentInput.addEventListener('input', handleUpdate('paymentAmount'));
 // paymentGo.addEventListener('click', calculatePaymentAmount);
-futureValueInput.addEventListener('input', handleUpdate('futureValue'));
 futureValueGo.addEventListener('click', calculateFutureValue);
 clearBtn.addEventListener('click', handleClear);
 
