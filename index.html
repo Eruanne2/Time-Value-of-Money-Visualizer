@@ -25,14 +25,14 @@
 
     <main>
       <form>
-        <label for='current-value-input'><span class='error hidden'>REQUIRED</span> Current Value</label>
+        <label for='current-value-input'><span id='current-value-error' class='error hidden'>REQUIRED</span> Current Value</label>
         <div>
           <input id='current-value-input' type='text'/>
           <button id='current-value-go' class='go'>GO >></button>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
 
-        <label for='term-input'><span class='error hidden'>REQUIRED</span> Term </label>
+        <label for='term-input'><span id='term-length-error' class='error hidden'>REQUIRED</span> Term </label>
         <div id='term-input-holder'>
           <input id='term-text-input' type='text'/>
           <select id='term-select-input'>
@@ -43,7 +43,7 @@
           <!--add absolutely positioned info box (display on hover)-->
         </div>
 
-        <label for='interest-input'><span class='error hidden'>REQUIRED</span> Annual Interest Rate </label>
+        <label for='interest-input'><span id='interest-error' class='error hidden'>REQUIRED</span> Annual Interest Rate </label>
         <div>
           <input id='interest-input' type='text'/>
           <button id='interest-go' class='go'>GO >></button>
@@ -59,14 +59,14 @@
           </select>
         </div>
 
-        <label for='payment-input'><span class='error hidden'>REQUIRED</span> Monthly Payment Amount </label>
+        <label for='payment-input'><span id='payment-error' class='error hidden'>REQUIRED</span> Monthly Payment Amount </label>
         <div>
           <input id='payment-input' type='text'/>
           <button id='payment-go' class='go'>GO >></button>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
 
-        <label for='future-value-input'><span class='error hidden'>REQUIRED</span> Future Value </label>
+        <label for='future-value-input'><span id='future-value-error' class='error hidden'>REQUIRED</span> Future Value </label>
         <div>
           <input id='future-value-input' type='text'/>
           <button id='future-value-go' class='go'>GO >></button>

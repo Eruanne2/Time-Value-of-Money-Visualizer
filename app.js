@@ -13,6 +13,14 @@ const futureValueInput = document.getElementById('future-value-input');
 const futureValueGo = document.getElementById('future-value-go');
 const clearBtn = document.getElementById('clear-btn');
 
+const errors = {
+  currentValue: document.getElementById('current-value-error'),
+  termLength: document.getElementById('term-length-error'),
+  interestRate: document.getElementById('interest-error'),
+  paymentAmount: document.getElementById('payment-error'),
+  futureValue: document.getElementById('future-value-error')
+}
+
 // calc values
 let mockState = {
   currentValue: 0,
@@ -32,9 +40,10 @@ let dataByMonth = {}; // { 1: { startingBalance: 1000, payments: 2500, interest:
 
 // EVENT HANDLERS
 const handleUpdate = field => {
+  console.log('inside handleUpdate');
   return e => {
-    mockSate[field] = e.currentTarget.value;
-    if (mockState[field] !== '') e.currentTarget.classList.add('hidden'); 
+    mockState[field] = e.currentTarget.value;
+    if (mockState[field] !== '') errors[field].classList.add('hidden'); 
   }
 };
 
@@ -55,9 +64,11 @@ t = number of months
 
 
 const calculateCurrentValue = e => {
+  e.preventDefault();
   console.log('inside calculatecurrentvalue')
   // check that the proper field are filled in - display errors
-  if (mockState['termLength'] === '') termTextInput.classList.remove('hidden');
+  debugger
+  if (e.currentTarget.value === '') errors["termLength"].classList.remove('hidden');
 
   // calculate value and fill in field
 
