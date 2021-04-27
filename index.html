@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Value of Money Visualizer</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="#">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet" type="text/css">
 </head>
 
 <body class="container">
-    <h1>Time Value of Money Visualizer</h1>
+    <h1 id='main-header'>Time Value of Money Visualizer</h1>
 
     <main>
       <form>
@@ -19,7 +21,7 @@
         <input id='start-balance-input' type='text'/>
 
         <label for='term-input'>Term</label>
-        <div id='term-input'>
+        <div id='term-input-holder'>
           <input id='term-input' type='text'/>
           <select>
             <option value='year'>years</option>
@@ -38,7 +40,7 @@
           <option value='day'>days</option>
         </select>
 
-        <label for='payment-input'>Monthly Payments</label>
+        <label for='payment-input'>Monthly Payment Amount</label>
         <input type='text'/>
 
         <label for='end-balance-input'>Ending Balance</label>
@@ -47,7 +49,7 @@
         <button id='submit-btn'>CLEAR</button>
       </form>
       
-      <section className='graph-container'>
+      <section class='graph-container'>
         
       </section>
       

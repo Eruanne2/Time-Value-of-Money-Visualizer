@@ -1,22 +1,58 @@
+html {
+  font-family: "Hind Siliguri", sans-serif;
+  color: #253C5B;
+  background-color: #F0FFF0; }
+
+#main-header {
+  text-align: center;
+  font-size: 30px;
+  margin: 50px; }
+
 main {
-  border: 1px solid blue;
-  display: flex;
-}
+  display: flex; }
 
 form {
-  border: 1px solid blue;
   float: left;
   width: 25%;
-}
+  margin: 0 50px 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; }
+  form label {
+    margin-top: 20px;
+    margin-bottom: 2px; }
+  form input {
+    height: 23px; }
+  form input, form select {
+    border-radius: 5px;
+    border: 1px solid #253C5B; }
+  form #term-input {
+    width: 60px; }
+  form select {
+    font-family: "Hind Siliguri", sans-serif; }
+  form button {
+    background: transparent;
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #1990FF;
+    border: 2px solid #1990FF;
+    border-radius: 10px;
+    width: 75px;
+    padding: 2px;
+    margin-top: 20px; }
+  form button:hover {
+    cursor: pointer; }
 
 .graph-container {
-  border: 1px solid blue;
-}
+  border: 1px solid #253C5B;
+  height: 550px;
+  width: 1300px;
+  background-color: #ffffff; }
 
 aside {
-  border: 1px solid blue;
   float: right;
-  width: 25%;
-}
+  width: 20%;
+  margin: 0 50px 0 100px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,21 +1,85 @@
+$main-blue: #1990FF;
+$main-green: #1ddb33;
+$accent-blue: #00EDFF;
+$accent-yellow: #F6FF07;
+$background-green: #F0FFF0;
+$line-blue: #253C5B;
+$font: 'Hind Siliguri', sans-serif;
+
+html {
+  font-family: $font;
+  color: $line-blue;
+  background-color: $background-green;
+}
+
+#main-header {
+  text-align: center;
+  font-size: 30px;
+  margin: 50px;
+}
+
 main {
-  border: 1px solid blue;
   display: flex;
 }
 
 form {
-  border: 1px solid blue;
   float: left;
   width: 25%;
+  margin: 0 50px 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  label {
+    margin-top: 20px;
+    margin-bottom: 2px;
+  }
+
+  input {
+    height: 23px;
+  }
+
+  input, select {
+    border-radius: 5px;
+    border: 1px solid $line-blue;
+  }
+
+  #term-input {
+    width: 60px;
+  }
+
+  select {
+    font-family: $font;
+  }
+
+  button {
+    background: transparent;
+    font-family: $font;
+    font-weight: 700;
+    font-size: 16px;
+    color: $main-blue;
+    border: 2px solid $main-blue;
+    border-radius: 10px;
+    width: 75px;
+    padding: 2px;
+    margin-top: 20px;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
 }
 
 .graph-container {
-  border: 1px solid blue;
+  border: 1px solid $line-blue;
+  height: 550px;
+  width: 1300px;
+  background-color: #ffffff;
 }
 
 aside {
-  border: 1px solid blue;
   float: right;
-  width: 25%;
+  width: 20%;
+  margin: 0 50px 0 100px;
 }
 

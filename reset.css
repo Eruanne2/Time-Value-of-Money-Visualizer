@@ -46,7 +46,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-a:hover {
+a:hover, button:hover, input[type='submit']:hover {
 	cursor: pointer;
 }
 a, a:visited {
