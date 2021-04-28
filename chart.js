@@ -30,47 +30,12 @@ const animateGraph = (principal, dataByMonth) => {
     interestData.push(principal + (dataByMonth[idx].payments) + dataByMonth[idx].interest);
   }
 
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'Principal',
-      data: (new Array(dataByMonth.length)).fill(principal.toFixed(2), 0, dataByMonth.length),
-      borderColor: style.accentYellow,
-      backgroundColor: style.accentYellow,
-      fill: true
-    }, {
-      label: 'Payments',
-      data: paymentsData,
-      borderColor: style.mainBlue,
-      backgroundColor: style.mainBlue,
-      fill: true
-    }, {
-      label: 'Interest',
-      data: interestData,
-      borderColor: style.mainGreen,
-      backgroundColor: style.mainGreen,
-      fill: true
-    }]
-  };
-
-  // const data1 = [];
-  // const data2 = [];
-  // let prev = 100;
-  // let prev2 = 80;
-  // for (let i = 0; i < 1000; i++) {
-  //   prev += 5 - Math.random() * 10;
-  //   data1.push({x: i, y: prev});
-  //   prev2 += 5 - Math.random() * 10;
-  //   data2.push({x: i, y: prev2});
-  // }
-
-
-  const totalDuration = 3000;
-  const delayBetweenPoints = totalDuration / data.length;
+  const totalDuration = 5000;
+  const delayBetweenPoints = totalDuration / labels.length;
   const previousY = (ctx) => 
     ctx.index === 0 ? 
-      ctx.chart.scales.y.getPixelForValue(100) 
-      : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+    ctx.chart.scales.y.getPixelForValue(100) 
+    : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
   const animation = {
     x: {
       type: 'number',
@@ -100,6 +65,34 @@ const animateGraph = (principal, dataByMonth) => {
     }
   };
 
+  data = {
+    labels: labels,
+    datasets: [{
+      label: 'Principal',
+      borderColor: style.accentYellow,
+      backgroundColor: style.accentYellow,
+      fill: true,
+      borderWidth: 1,
+      radius: 0,
+      data: (new Array(dataByMonth.length)).fill(principal.toFixed(2), 0, dataByMonth.length),
+    },
+    {
+      label: 'Payments',
+      borderColor: style.mainBlue,
+      backgroundColor: style.mainBlue,
+      fill: true,
+      borderWidth: 1,
+      radius: 0,
+      data: paymentsData,
+    },
+    {
+      label: 'Interest',
+      data: interestData,
+      borderColor: style.mainGreen,
+      backgroundColor: style.mainGreen,
+      fill: true
+    }]
+  }
 
   const config = {
     type: 'line',
@@ -126,6 +119,7 @@ const animateGraph = (principal, dataByMonth) => {
       }
     }
   };
+
 
   // create graph
   var graph = new Chart(
