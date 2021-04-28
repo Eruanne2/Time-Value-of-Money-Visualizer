@@ -24,12 +24,12 @@ const errors = {
 // link inputs and values
 const getValuesFromInput = () => {
   return {
-    pv: parseFloat(presentValueInput.value),                                  // present value
-    fv: parseFloat(futureValueInput.value),                                   // future value
+    pv: parseFloat(presentValueInput.value),                                // present value
+    fv: parseFloat(futureValueInput.value),                                 // future value
     i: (parseFloat(interestInput.value) / 100).toFixed(2),                  // interest rate
-    n: parseInt(compoundsSelect.value),                                     // times compounding per year
-    t: parseInt(termTextInput.value) * parseInt(termSelectInput.value),     // time in months
-    pmt: (parseInt(paymentInput.value)).toFixed(2)                          // monthly payment amount
+    n: parseFloat(compoundsSelect.value),                                   // times compounding per year
+    t: parseFloat(termTextInput.value) * parseFloat(termSelectInput.value), // time in months
+    pmt: (parseFloat(paymentInput.value)).toFixed(2)                        // monthly payment amount
   };
 }
 
@@ -40,7 +40,7 @@ const calculatePresentValue = e => {
   // check that the proper field are filled in - display errors
   if (termTextInput.value === '') errors['termLength'].classList.remove('hidden');
   if (interestInput.value === '') errors['interestRate'].classList.remove('hidden');
-  /* if (paymentInput.value === '') errors['paymentAmount'].classList.remove('hidden'); */
+  if (paymentInput.value === '') errors['paymentAmount'].classList.remove('hidden');
   if (futureValueInput.value === '') errors['futureValue'].classList.remove('hidden');
 
   // calculate present value
@@ -48,26 +48,25 @@ const calculatePresentValue = e => {
   vals.pv = 0;
   let dataByMonth = [];
   let finalBalance = vals.fv;
-  let numer = vals.fv;
-  let denom = (1 + (vals.i / vals.n)) ** (vals.n * vals.t / 12);
-  vals.pv = numer / denom;
-  // presentValueInput.value = vals.pv.toFixed(2);
+  // let numer = vals.fv;
+  // let denom = (1 + (vals.i / vals.n)) ** (vals.n * vals.t / 12);
+  // vals.pv = numer / denom;
 
-  // for (let count = vals.t; count >= 1; count--){ // iterate through each month, starting with the last
-  //   vals.fv = parseFloat(vals.fv) - parseFloat(vals.pmt); // subtract payment
+  for (let count = vals.t; count >= 1; count--){ // iterate through each month, starting with the last
+    vals.fv = parseFloat(vals.fv) - parseFloat(vals.pmt); // subtract payment
 
-  //   let numer = vals.fv; // calculate balance before this month's interest
-  //   let denom = (1 + (vals.i / vals.n)) ** (vals.n / 12); 
-  //   vals.pv = numer / denom;
+    let numer = vals.fv; // calculate balance before this month's interest
+    let denom = (1 + (vals.i / vals.n)) ** (vals.n / 12); 
+    vals.pv = numer / denom;
 
-  //   dataByMonth.unshift({ // push this month's balances to the beginning of the array
-  //     total: vals.fv,
-  //     payments: (count) * vals.pmt, 
-  //     interest: vals.fv - vals.pv
-  //   });
+    dataByMonth.unshift({ // push this month's balances to the beginning of the array
+      total: vals.fv,
+      payments: (count) * vals.pmt, 
+      interest: vals.fv - vals.pv
+    });
 
-  //   vals.fv = vals.pv; // set the previous month's ending balance to this month's starting balance
-  // }
+    vals.fv = vals.pv; // set the previous month's ending balance to this month's starting balance
+  }
   
   presentValueInput.value = vals.pv.toFixed(2); // display present value to user
   let principal = vals.pv;
