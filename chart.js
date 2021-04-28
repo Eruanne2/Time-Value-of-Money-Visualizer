@@ -8,15 +8,6 @@ style = {
   font: "'Hind Siliguri', sans-serif"
 }
 
-// create variables for use in AddData
-let allLabels = [];
-let allData = {
-  principalData: [],
-  paymentsData: [],
-  interestData: []
-}
-var graph;
-
 // animate graph
 const animateGraph = (principal, dataByMonth) => {
 
@@ -26,85 +17,108 @@ const animateGraph = (principal, dataByMonth) => {
   newChart.id = 'graph'
   document.getElementById('graph-container').append(newChart);
 
-  // fill in allData
-  allData.principalData = (new Array(dataByMonth.length)).fill(principal, 0, dataByMonth.length);
+  console.log('now the graph appears')
+  console.log('principal', principal)
+  console.log('dataByMonth', dataByMonth);
+
+  const labels = [];
+  const paymentsData = [];
+  const interestData = [];
   for (idx in dataByMonth) {
-    allLabels.push(idx + 1);
-    allData.paymentsData.push(principal + (dataByMonth[idx].payments));
-    allData.interestData.push(principal + (dataByMonth[idx].payments) + dataByMonth[idx].interest);
+    labels.push(idx + 1);
+    paymentsData.push(principal + (dataByMonth[idx].payments));
+    interestData.push(principal + (dataByMonth[idx].payments) + dataByMonth[idx].interest);
   }
 
   const data = {
-    labels: [allLabels[0]],
+    labels: labels,
     datasets: [{
       label: 'Principal',
-      data: [allData.principalData[0]],
+      data: (new Array(dataByMonth.length)).fill(principal.toFixed(2), 0, dataByMonth.length),
       borderColor: style.accentYellow,
       backgroundColor: style.accentYellow,
       fill: true
     }, {
       label: 'Payments',
-      data: [allData.paymentsData[0]],
+      data: paymentsData,
       borderColor: style.mainBlue,
       backgroundColor: style.mainBlue,
       fill: true
     }, {
       label: 'Interest',
-      data: [allData.interestData[0]],
+      data: interestData,
       borderColor: style.mainGreen,
       backgroundColor: style.mainGreen,
       fill: true
     }]
   };
 
+  const totalDuration = 10000;
+  const delayBetweenPoints = totalDuration / data.length;
+  const previousY = (ctx) => 
+    ctx.index === 0 ? 
+      ctx.graph.scales.y.getPixelForValue(100) 
+      : ctx.graph.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+  const animation = {
+    x: {
+      type: 'number',
+      easing: 'linear',
+      duration: delayBetweenPoints,
+      from: NaN, // the point is initially skipped
+      delay(ctx) {
+        if (ctx.type !== 'data' || ctx.xStarted) {
+          return 0;
+        }
+        ctx.xStarted = true;
+        return ctx.index * delayBetweenPoints;
+      }
+    },
+    y: {
+      type: 'number',
+      easing: 'linear',
+      duration: delayBetweenPoints,
+      from: previousY,
+      delay(ctx) {
+        if (ctx.type !== 'data' || ctx.yStarted) {
+          return 0;
+        }
+        ctx.yStarted = true;
+        return ctx.index * delayBetweenPoints;
+      }
+    }
+  };
+
   const config = {
     type: 'line',
     data,
     options: {
+      animation,
+      interaction: {
+        intersect: false
+      },
       radius: 0,
       scales: {
         y: {
           min: 0
+        },
+        x: {
+          type: 'linear'
         }
       },
       plugins: {
+        legend: false,
         filler: {
           drawTime: 'beforeDraw'
-        }
-      },
-      animation: {
-        easing: 'easeOutQuart',
-        from: (ctx) => {
-          if (ctx.type === 'data') {
-            if (ctx.mode === 'default' && !ctx.dropped) {
-              ctx.dropped = true;
-              return 0;
-            }
-          }
         }
       }
     }
   };
 
   // create graph
-  graph = new Chart(
+  var graph = new Chart(
     document.getElementById('graph'),
     config
   );
 
-  let intervalTime = 5000.0 / allLabels.length;
-
-  let fillGraph = setInterval(() => {
-    const gData = graph.data;
-    if (gData.labels.length === allLabels.length) clearInterval(fillGraph);
-  
-    gData.labels.push(allLabels[gData.labels.length])
-    
-    for (var i = 0; i < gData.datasets.length; ++i) {
-      let data = gData.datasets[i].data
-      data.push(Object.values(allData)[i][data.length]);
-    }
-    graph.update();
-  }, intervalTime);
-
 };
+

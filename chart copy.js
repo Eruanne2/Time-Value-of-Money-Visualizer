@@ -78,4 +78,3 @@ const animateGraph = (principal, dataByMonth) => {
   );
 
 };
-

@@ -72,17 +72,17 @@ const animateGraph = (principal, dataByMonth) => {
           drawTime: 'beforeDraw'
         }
       },
-      animation: {
-        easing: 'easeOutQuart',
-        from: (ctx) => {
-          if (ctx.type === 'data') {
-            if (ctx.mode === 'default' && !ctx.dropped) {
-              ctx.dropped = true;
-              return 0;
-            }
-          }
-        }
-      }
+      // animation: {
+      //   easing: 'easeOutQuart',
+      //   from: (ctx) => {
+      //     if (ctx.type === 'data') {
+      //       if (ctx.mode === 'default' && !ctx.dropped) {
+      //         ctx.dropped = true;
+      //         return 0;
+      //       }
+      //     }
+      //   }
+      // }
     }
   };
 
