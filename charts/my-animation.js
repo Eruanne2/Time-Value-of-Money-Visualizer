@@ -54,7 +54,13 @@ const animateGraph = (principal, dataByMonth) => {
       borderColor: style.mainGreen,
       backgroundColor: style.mainGreen,
       fill: true
-    }]
+    }],
+    animations: {
+      // y: {
+      //   duration: 1000,
+      //   delay: 500
+      // }
+    }
   };
 
   const config = {
@@ -65,24 +71,18 @@ const animateGraph = (principal, dataByMonth) => {
       scales: {
         y: {
           min: 0
-        }
+        },
       },
       plugins: {
         filler: {
           drawTime: 'beforeDraw'
-        }
+        },
       },
-      // animation: {
-      //   easing: 'easeOutQuart',
-      //   from: (ctx) => {
-      //     if (ctx.type === 'data') {
-      //       if (ctx.mode === 'default' && !ctx.dropped) {
-      //         ctx.dropped = true;
-      //         return 0;
-      //       }
-      //     }
-      //   }
-      // }
+      animation: {
+        y: {
+          easing: 'easeInOutElastic',
+        }
+      }
     }
   };
 
@@ -92,7 +92,8 @@ const animateGraph = (principal, dataByMonth) => {
     config
   );
 
-  let intervalTime = 5000.0 / allLabels.length;
+  // let intervalTime = 5000.0 / allLabels.length;
+  let intervalTime = 500;
 
   let fillGraph = setInterval(() => {
     const gData = graph.data;

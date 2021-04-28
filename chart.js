@@ -17,10 +17,6 @@ const animateGraph = (principal, dataByMonth) => {
   newChart.id = 'graph'
   document.getElementById('graph-container').append(newChart);
 
-  console.log('now the graph appears')
-  console.log('principal', principal)
-  console.log('dataByMonth', dataByMonth);
-
   const labels = [];
   const paymentsData = [];
   const interestData = [];
@@ -30,8 +26,9 @@ const animateGraph = (principal, dataByMonth) => {
     interestData.push(principal + (dataByMonth[idx].payments) + dataByMonth[idx].interest);
   }
 
-  const totalDuration = 5000;
-  const delayBetweenPoints = totalDuration / labels.length;
+  // const totalDuration = 5000;
+  // const delayBetweenPoints = totalDuration / labels.length;
+  const delayBetweenPoints = 100;
   const previousY = (ctx) => 
     ctx.index === 0 ? 
     ctx.chart.scales.y.getPixelForValue(100) 
