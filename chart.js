@@ -53,12 +53,24 @@ const animateGraph = (principal, dataByMonth) => {
     }]
   };
 
-  const totalDuration = 10000;
+  // const data1 = [];
+  // const data2 = [];
+  // let prev = 100;
+  // let prev2 = 80;
+  // for (let i = 0; i < 1000; i++) {
+  //   prev += 5 - Math.random() * 10;
+  //   data1.push({x: i, y: prev});
+  //   prev2 += 5 - Math.random() * 10;
+  //   data2.push({x: i, y: prev2});
+  // }
+
+
+  const totalDuration = 3000;
   const delayBetweenPoints = totalDuration / data.length;
   const previousY = (ctx) => 
     ctx.index === 0 ? 
-      ctx.graph.scales.y.getPixelForValue(100) 
-      : ctx.graph.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+      ctx.chart.scales.y.getPixelForValue(100) 
+      : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
   const animation = {
     x: {
       type: 'number',
@@ -87,6 +99,7 @@ const animateGraph = (principal, dataByMonth) => {
       }
     }
   };
+
 
   const config = {
     type: 'line',
