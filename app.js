@@ -7,8 +7,8 @@ const termGo = document.getElementById('term-go');
 const interestInput = document.getElementById('interest-input');
 const interestGo = document.getElementById('interest-go');
 const compoundsSelect = document.getElementById('compounds-select');
-// const paymentInput = document.getElementById('payment-input');
-// const paymentGo = document.getElementById('payment-go');
+const paymentInput = document.getElementById('payment-input');
+const paymentGo = document.getElementById('payment-go');
 const futureValueInput = document.getElementById('future-value-input');
 const futureValueGo = document.getElementById('future-value-go');
 const clearBtn = document.getElementById('clear-btn');
@@ -17,93 +17,44 @@ const errors = {
   presentValue: document.getElementById('present-value-error'),
   termLength: document.getElementById('term-length-error'),
   interestRate: document.getElementById('interest-error'),
-  // paymentAmount: document.getElementById('payment-error'),
+  paymentAmount: document.getElementById('payment-error'),
   futureValue: document.getElementById('future-value-error')
 }
-
 
 // link inputs and values
 const getValuesFromInput = () => {
   return {
-    pv: parseInt(presentValueInput.value),
-    fv: parseInt(futureValueInput.value),
-    i: (parseFloat(interestInput.value)).toFixed(2),
-    n: parseInt(compoundsSelect.value),
-    t: parseInt(termTextInput.value) * parseInt(termSelectInput.value), 
-    // pmt: (parseInt(paymentInput.value)).toFixed(2)
+    pv: parseInt(presentValueInput.value),                                  // present value
+    fv: parseInt(futureValueInput.value),                                   // future value
+    i: (parseFloat(interestInput.value) / 100).toFixed(2),                  // interest rate
+    n: parseInt(compoundsSelect.value),                                     // times compounding per year
+    t: parseInt(termTextInput.value) * parseInt(termSelectInput.value),     // time in months
+    pmt: (parseInt(paymentInput.value)).toFixed(2)                          // monthly payment amount
   };
 }
 
-
 // EVENT HANDLERS
-
 const calculatePresentValue = e => {
   e.preventDefault();
 
   // check that the proper field are filled in - display errors
   if (termTextInput.value === '') errors['termLength'].classList.remove('hidden');
   if (interestInput.value === '') errors['interestRate'].classList.remove('hidden');
-  // if (paymentInput.value === '') errors['paymentAmount'].classList.remove('hidden');
+  /* if (paymentInput.value === '') errors['paymentAmount'].classList.remove('hidden'); */
   if (futureValueInput.value === '') errors['futureValue'].classList.remove('hidden');
 
-  let vals = getValuesFromInput();
-
   // calculate missing value
-  debugger
+  let vals = getValuesFromInput();
+  vals.pv = 0;
   let numer = vals.fv;
   let denom = (1 + (vals.i / vals.n)) ** (vals.n * vals.t / 12);
-  vals.pv = (numer / denom).toFixed(2);
-  presentValueInput.value = vals.pv;
-
+  vals.pv = numer / denom;
+  presentValueInput.value = vals.pv.toFixed(2);
+  
+  let principal = vals.pv;
   // trigger graph
-  animateGraph();
+  animateGraph(principal, dataByMonth);
 };
-
-
-const calculateTermLength = e => {
-  e.preventDefault();
-  console.log('inside calculatepresentvalue')
-  // check that the proper field are filled in - display errors
-  if (presentValueInput.value === '') errors["presentValue"].classList.remove('hidden');
-  if (interestInput.value === '') errors["interestRate"].classList.remove('hidden');
-  // if (paymentInput.value === '') errors["paymentAmount"].classList.remove('hidden');
-  if (futureValueInput.value === '') errors["futureValue"].classList.remove('hidden');
-
-  // calculate value and fill in field
-
-  // trigger graph
-  animateGraph();
-};
-
-const calculateInterestRate = e => {
-  e.preventDefault();
-  console.log('inside calculatepresentvalue')
-  // check that the proper field are filled in - display errors
-  if (presentValueInput.value === '') errors["presentValue"].classList.remove('hidden');
-  if (termTextInput.value === '') errors["termLength"].classList.remove('hidden');
-  // if (paymentInput.value === '') errors["paymentAmount"].classList.remove('hidden');
-  if (futureValueInput.value === '') errors["futureValue"].classList.remove('hidden');
-
-  // calculate value and fill in field
-
-  // trigger graph
-  animateGraph();
-};
-
-// const calculatePaymentAmount = e => {
-//   e.preventDefault();
-//   console.log('inside calculatepresentvalue')
-//   // check that the proper field are filled in - display errors
-//   if (presentValueInput.value === '') errors["presentValue"].classList.remove('hidden');
-//   if (termTextInput.value === '') errors["termLength"].classList.remove('hidden');
-//   if (interestInput.value === '') errors["interestRate"].classList.remove('hidden');
-//   if (futureValueInput.value === '') errors["futureValue"].classList.remove('hidden');
-
-//   // calculate value and fill in field
-
-//   // trigger graph
-//   animateGraph();
-// };
 
 const calculateFutureValue = e => {
   e.preventDefault();
@@ -112,13 +63,33 @@ const calculateFutureValue = e => {
   if (presentValueInput.value === '') errors["presentValue"].classList.remove('hidden');
   if (termTextInput.value === '') errors["termLength"].classList.remove('hidden');
   if (interestInput.value === '') errors["interestRate"].classList.remove('hidden');
-  // if (paymentInput.value === '') errors["paymentAmount"].classList.remove('hidden');
+  if (paymentInput.value === '') errors["paymentAmount"].classList.remove('hidden');
 
   // calculate value and fill in field
+  let vals = getValuesFromInput();
+  vals.fv = 0;
+  let principal = vals.pv;
+  let dataByMonth = [];
+
+  // vals.fv = vals.pv * (1 + (vals.i / vals.n)) ** (vals.n * vals.t / 12);
+  // futureValueInput.value = vals.fv.toFixed(2);
+
+  for (let count = 1; count <= vals.t; count++){
+    vals.fv = parseFloat(vals.pv) * (1 + (vals.i / vals.n)) ** (vals.n / 12); // accumulate interest
+    vals.fv = parseFloat(vals.fv) + parseFloat(vals.pmt); // add payment
+    dataByMonth.push({ // record this month's ending balance
+      total: vals.fv,
+      payments: (count) * vals.pmt, 
+      interest: vals.fv - (principal) - ((count) * vals.pmt)
+    });
+    vals.pv = vals.fv; // set the next month's starting balance to this month's ending balance
+  }
+  futureValueInput.value = vals.fv.toFixed(2);
 
   // trigger graph
-  animateGraph();
+  animateGraph(principal, dataByMonth);
 };
+
 
 const handleClear = e => {
   e.preventDefault();
@@ -135,9 +106,6 @@ const handleClear = e => {
 
 // add event listeners
 presentValueGo.addEventListener('click', calculatePresentValue);
-termGo.addEventListener('click', calculateTermLength);
-interestGo.addEventListener('click', calculateInterestRate);
-// paymentGo.addEventListener('click', calculatePaymentAmount);
 futureValueGo.addEventListener('click', calculateFutureValue);
 clearBtn.addEventListener('click', handleClear);
 
@@ -146,10 +114,11 @@ clearBtn.addEventListener('click', handleClear);
 // OTHER FUNCTIONS
 
 // animate graph
-const animateGraph = () => {
+const animateGraph = (principal, data) => {
   console.log('now the graph appears')
+  console.log('principal', principal)
+  console.log('dataByMonth', data);
 
-  let dataByMonth = []; // [{ startingBalance: 1000, payments: 2500, interest: 482.34}, {...}]
   // fill in data by looping through formula
 
   // create graph with dataByMonth (x-axis are array indicies in months, y-axis are values in dollars)
