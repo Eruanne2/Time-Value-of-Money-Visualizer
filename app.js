@@ -24,8 +24,8 @@ const errors = {
 // link inputs and values
 const getValuesFromInput = () => {
   return {
-    pv: parseInt(presentValueInput.value),                                  // present value
-    fv: parseInt(futureValueInput.value),                                   // future value
+    pv: parseFloat(presentValueInput.value),                                  // present value
+    fv: parseFloat(futureValueInput.value),                                   // future value
     i: (parseFloat(interestInput.value) / 100).toFixed(2),                  // interest rate
     n: parseInt(compoundsSelect.value),                                     // times compounding per year
     t: parseInt(termTextInput.value) * parseInt(termSelectInput.value),     // time in months
@@ -43,14 +43,33 @@ const calculatePresentValue = e => {
   /* if (paymentInput.value === '') errors['paymentAmount'].classList.remove('hidden'); */
   if (futureValueInput.value === '') errors['futureValue'].classList.remove('hidden');
 
-  // calculate missing value
+  // calculate present value
   let vals = getValuesFromInput();
   vals.pv = 0;
+  let dataByMonth = [];
+  let finalBalance = vals.fv;
   let numer = vals.fv;
   let denom = (1 + (vals.i / vals.n)) ** (vals.n * vals.t / 12);
   vals.pv = numer / denom;
-  presentValueInput.value = vals.pv.toFixed(2);
+  // presentValueInput.value = vals.pv.toFixed(2);
+
+  // for (let count = vals.t; count >= 1; count--){ // iterate through each month, starting with the last
+  //   vals.fv = parseFloat(vals.fv) - parseFloat(vals.pmt); // subtract payment
+
+  //   let numer = vals.fv; // calculate balance before this month's interest
+  //   let denom = (1 + (vals.i / vals.n)) ** (vals.n / 12); 
+  //   vals.pv = numer / denom;
+
+  //   dataByMonth.unshift({ // push this month's balances to the beginning of the array
+  //     total: vals.fv,
+  //     payments: (count) * vals.pmt, 
+  //     interest: vals.fv - vals.pv
+  //   });
+
+  //   vals.fv = vals.pv; // set the previous month's ending balance to this month's starting balance
+  // }
   
+  presentValueInput.value = vals.pv.toFixed(2); // display present value to user
   let principal = vals.pv;
   // trigger graph
   animateGraph(principal, dataByMonth);
@@ -71,20 +90,18 @@ const calculateFutureValue = e => {
   let principal = vals.pv;
   let dataByMonth = [];
 
-  // vals.fv = vals.pv * (1 + (vals.i / vals.n)) ** (vals.n * vals.t / 12);
-  // futureValueInput.value = vals.fv.toFixed(2);
-
-  for (let count = 1; count <= vals.t; count++){
+  for (let count = 1; count <= vals.t; count++){ // iterate through each month
     vals.fv = parseFloat(vals.pv) * (1 + (vals.i / vals.n)) ** (vals.n / 12); // accumulate interest
     vals.fv = parseFloat(vals.fv) + parseFloat(vals.pmt); // add payment
-    dataByMonth.push({ // record this month's ending balance
+    dataByMonth.push({ // push this month's ending balances to the end of the array
       total: vals.fv,
       payments: (count) * vals.pmt, 
       interest: vals.fv - (principal) - ((count) * vals.pmt)
     });
     vals.pv = vals.fv; // set the next month's starting balance to this month's ending balance
   }
-  futureValueInput.value = vals.fv.toFixed(2);
+
+  futureValueInput.value = vals.fv.toFixed(2); // display future value to user
 
   // trigger graph
   animateGraph(principal, dataByMonth);
