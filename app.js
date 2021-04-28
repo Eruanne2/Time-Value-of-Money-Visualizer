@@ -17,21 +17,19 @@ const errors = {
   futureValue: document.getElementById('future-value-error')
 }
 
-// 
-const removeError = field => {
-  console.log('inside remove error');
-  return e => errors[field].classList.add('hidden');
-}
+// FUNCTIONS
+
+const removeError = field => e => errors[field].classList.add('hidden');
 
 // link inputs and values
 const getValuesFromInput = () => {
   return {
     pv: parseFloat(presentValueInput.value),                                // present value
     fv: parseFloat(futureValueInput.value),                                 // future value
-    i: (parseFloat(interestInput.value) / 100).toFixed(2),                  // interest rate
+    i: parseFloat(interestInput.value) / 100,                               // interest rate
     n: parseFloat(compoundsSelect.value),                                   // times compounding per year
     t: parseFloat(termTextInput.value) * parseFloat(termSelectInput.value), // time in months
-    pmt: (parseFloat(paymentInput.value)).toFixed(2) || 0.0                 // monthly payment amount
+    pmt: parseFloat(paymentInput.value) || 0                                // monthly payment amount
   };
 }
 
