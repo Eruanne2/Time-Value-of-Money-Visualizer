@@ -60,16 +60,20 @@ const calculatePresentValue = e => {
     vals.pv = numer / denom;
 
     dataByMonth.unshift({ // push this month's balances to the beginning of the array
-      total: vals.fv,
-      payments: (count) * vals.pmt, 
-      interest: vals.fv - vals.pv
+      total: vals.fv + parseFloat(vals.pmt),
+      payments: (count) * vals.pmt,
+      interest: vals.fv - vals.pv // this is not be cumulative
     });
-
     vals.fv = vals.pv; // set the previous month's ending balance to this month's starting balance
   }
+
+  for (let i = 1; i < dataByMonth.length; i++){ // make interest cumulative
+    dataByMonth[i].interest += dataByMonth[i-1].interest;
+  };
   
   presentValueInput.value = vals.pv.toFixed(2); // display present value to user
   let principal = vals.pv;
+
   // trigger graph
   animateGraph(principal, dataByMonth);
 };
