@@ -8,15 +8,6 @@ style = {
   font: "'Hind Siliguri', sans-serif"
 }
 
-// create variables for use in AddData
-let allLabels = [];
-let allData = {
-  principalData: [],
-  paymentsData: [],
-  interestData: []
-}
-var graph;
-
 // animate graph
 const animateGraph = (principal, dataByMonth) => {
 
@@ -26,7 +17,13 @@ const animateGraph = (principal, dataByMonth) => {
   newChart.id = 'graph'
   document.getElementById('graph-container').append(newChart);
 
-  // fill in allData
+  // harvest data from dataByMonth
+  let allLabels = [];
+  let allData = {
+    principalData: [],
+    paymentsData: [],
+    interestData: []
+  }
   allData.principalData = (new Array(dataByMonth.length)).fill(principal, 0, dataByMonth.length);
   for (idx in dataByMonth) {
     allLabels.push(idx + 1);
@@ -71,7 +68,8 @@ const animateGraph = (principal, dataByMonth) => {
       radius: 0,
       scales: {
         y: {
-          min: 0
+          min: 0,
+          max: allData.interestData[allData.interestData.length - 1] + .10 * allData.interestData[allData.interestData.length - 1] 
         },
       },
       plugins: {
@@ -81,9 +79,6 @@ const animateGraph = (principal, dataByMonth) => {
       },
       animation: {
         duration: 0
-        // y: {
-        //   easing: 'easeInOutElastic',
-        // }
       }
     }
   };
