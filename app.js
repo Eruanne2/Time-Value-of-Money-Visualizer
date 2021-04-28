@@ -17,8 +17,13 @@ const errors = {
   presentValue: document.getElementById('present-value-error'),
   termLength: document.getElementById('term-length-error'),
   interestRate: document.getElementById('interest-error'),
-  paymentAmount: document.getElementById('payment-error'),
   futureValue: document.getElementById('future-value-error')
+}
+
+// 
+const removeError = field => {
+  console.log('inside remove error');
+  return e => errors[field].classList.add('hidden');
 }
 
 // link inputs and values
@@ -29,18 +34,17 @@ const getValuesFromInput = () => {
     i: (parseFloat(interestInput.value) / 100).toFixed(2),                  // interest rate
     n: parseFloat(compoundsSelect.value),                                   // times compounding per year
     t: parseFloat(termTextInput.value) * parseFloat(termSelectInput.value), // time in months
-    pmt: (parseFloat(paymentInput.value)).toFixed(2)                        // monthly payment amount
+    pmt: (parseFloat(paymentInput.value)).toFixed(2) || 0.0                 // monthly payment amount
   };
 }
 
-// EVENT HANDLERS
+// calculations
 const calculatePresentValue = e => {
   e.preventDefault();
 
   // check that the proper field are filled in - display errors
   if (termTextInput.value === '') errors['termLength'].classList.remove('hidden');
   if (interestInput.value === '') errors['interestRate'].classList.remove('hidden');
-  if (paymentInput.value === '') errors['paymentAmount'].classList.remove('hidden');
   if (futureValueInput.value === '') errors['futureValue'].classList.remove('hidden');
 
   // calculate present value
@@ -80,12 +84,19 @@ const calculatePresentValue = e => {
 
 const calculateFutureValue = e => {
   e.preventDefault();
-  console.log('inside calculatepresentvalue')
   // check that the proper field are filled in - display errors
-  if (presentValueInput.value === '') errors["presentValue"].classList.remove('hidden');
-  if (termTextInput.value === '') errors["termLength"].classList.remove('hidden');
-  if (interestInput.value === '') errors["interestRate"].classList.remove('hidden');
-  if (paymentInput.value === '') errors["paymentAmount"].classList.remove('hidden');
+  if (presentValueInput.value === '') {
+    errors["presentValue"].classList.remove('hidden');
+    return;
+  }
+  if (termTextInput.value === '') {
+    errors["termLength"].classList.remove('hidden');
+    return;
+  }
+  if (interestInput.value === '') {
+    errors["interestRate"].classList.remove('hidden');
+    return;
+  }
 
   // calculate value and fill in field
   let vals = getValuesFromInput();
@@ -110,7 +121,6 @@ const calculateFutureValue = e => {
   animateGraph(principal, dataByMonth);
 };
 
-
 const handleClear = e => {
   e.preventDefault();
 
@@ -125,23 +135,12 @@ const handleClear = e => {
 };
 
 // add event listeners
+presentValueInput.addEventListener('input', removeError('presentValue'));
 presentValueGo.addEventListener('click', calculatePresentValue);
+termTextInput.addEventListener('input', removeError('termLength'));
+interestInput.addEventListener('input', removeError('interestRate'));
+futureValueInput.addEventListener('input', removeError('futureValue'));
 futureValueGo.addEventListener('click', calculateFutureValue);
 clearBtn.addEventListener('click', handleClear);
 
-
-
-// OTHER FUNCTIONS
-
-// animate graph
-const animateGraph = (principal, data) => {
-  console.log('now the graph appears')
-  console.log('principal', principal)
-  console.log('dataByMonth', data);
-
-  // fill in data by looping through formula
-
-  // create graph with dataByMonth (x-axis are array indicies in months, y-axis are values in dollars)
-
-};
 

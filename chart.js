@@ -27,3 +27,18 @@ var myChart = new Chart(
   document.getElementById('myChart'),
   config
 );
+
+
+
+// animate graph
+const animateGraph = (principal, data) => {
+  console.log('now the graph appears')
+  console.log('principal', principal)
+  console.log('dataByMonth', data);
+
+  // fill in data by looping through formula
+
+  // create graph with dataByMonth (x-axis are array indicies in months, y-axis are values in dollars)
+
+};
+
