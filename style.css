@@ -57,7 +57,7 @@ form {
   form button:hover {
     cursor: pointer; }
 
-.graph-container {
+#graph-container {
   border: 1px solid #253C5B;
   height: 550px;
   width: 1300px;

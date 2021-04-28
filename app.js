@@ -1,18 +1,15 @@
+
 // DOM elements
 const presentValueInput = document.getElementById('present-value-input');
 const presentValueGo = document.getElementById('present-value-go');
 const termTextInput = document.getElementById('term-text-input');
 const termSelectInput = document.getElementById('term-select-input');
-const termGo = document.getElementById('term-go');
 const interestInput = document.getElementById('interest-input');
-const interestGo = document.getElementById('interest-go');
 const compoundsSelect = document.getElementById('compounds-select');
 const paymentInput = document.getElementById('payment-input');
-const paymentGo = document.getElementById('payment-go');
 const futureValueInput = document.getElementById('future-value-input');
 const futureValueGo = document.getElementById('future-value-go');
 const clearBtn = document.getElementById('clear-btn');
-
 const errors = {
   presentValue: document.getElementById('present-value-error'),
   termLength: document.getElementById('term-length-error'),
@@ -43,18 +40,15 @@ const calculatePresentValue = e => {
   e.preventDefault();
 
   // check that the proper field are filled in - display errors
-  if (termTextInput.value === '') errors['termLength'].classList.remove('hidden');
-  if (interestInput.value === '') errors['interestRate'].classList.remove('hidden');
-  if (futureValueInput.value === '') errors['futureValue'].classList.remove('hidden');
+  if (termTextInput.value === '') { errors["termLength"].classList.remove('hidden'); return; }
+  if (interestInput.value === '') { errors["interestRate"].classList.remove('hidden'); return; }
+  if (futureValueInput.value === '') { errors["futureValue"].classList.remove('hidden'); return; }
 
   // calculate present value
   let vals = getValuesFromInput();
   vals.pv = 0;
   let dataByMonth = [];
   let finalBalance = vals.fv;
-  // let numer = vals.fv;
-  // let denom = (1 + (vals.i / vals.n)) ** (vals.n * vals.t / 12);
-  // vals.pv = numer / denom;
 
   for (let count = vals.t; count >= 1; count--){ // iterate through each month, starting with the last
     vals.fv = parseFloat(vals.fv) - parseFloat(vals.pmt); // subtract payment
@@ -85,18 +79,9 @@ const calculatePresentValue = e => {
 const calculateFutureValue = e => {
   e.preventDefault();
   // check that the proper field are filled in - display errors
-  if (presentValueInput.value === '') {
-    errors["presentValue"].classList.remove('hidden');
-    return;
-  }
-  if (termTextInput.value === '') {
-    errors["termLength"].classList.remove('hidden');
-    return;
-  }
-  if (interestInput.value === '') {
-    errors["interestRate"].classList.remove('hidden');
-    return;
-  }
+  if (presentValueInput.value === '') { errors["presentValue"].classList.remove('hidden'); return; }
+  if (termTextInput.value === '') { errors["termLength"].classList.remove('hidden'); return; }
+  if (interestInput.value === '') { errors["interestRate"].classList.remove('hidden'); return; }
 
   // calculate value and fill in field
   let vals = getValuesFromInput();
