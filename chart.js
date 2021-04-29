@@ -5,20 +5,11 @@ style = {
   accentYellow: '#F6FF07',
   backgroundGreen: '#F0FFF0',
   lineBlue: '#253C5B',
-  font: "'Architects Daughter', cursive"
+  font: "'Hind Siliguri', sans-serif"
 }
 
 // create graph
 const createGraphs = (principal, dataByMonth) => {
-
-  // CREATE LINE CHART
-
-  // delete old chart and create new one
-  document.getElementById('graph').remove();
-  let newChart = document.createElement('canvas');
-  newChart.id = 'graph'
-  document.getElementById('graph-container').append(newChart);
-
   // harvest data from dataByMonth
   let allLabels = [];
   let allData = {
@@ -32,6 +23,22 @@ const createGraphs = (principal, dataByMonth) => {
     allData.paymentsData.push(principal + (dataByMonth[idx].payments));
     allData.interestData.push(principal + (dataByMonth[idx].payments) + dataByMonth[idx].interest);
   }
+  const totalPayments = allData.paymentsData[allData.paymentsData.length -1] - principal;
+  const totalInterest = allData.interestData[allData.interestData.length -1] - allData.paymentsData[allData.paymentsData.length -1];
+
+  // FILL OUT INFO BOX
+  document.getElementById('principal-li').innerText = `Principal: $${principal.toFixed(2)}`
+  document.getElementById('payments-li').innerText = `Total Payments: $${totalPayments.toFixed(2)}`
+  document.getElementById('interest-li').innerText = `Total Interest: $${totalInterest.toFixed(2)}`
+
+
+  // CREATE LINE CHART
+
+  // delete old chart and create new one
+  document.getElementById('graph').remove();
+  let newChart = document.createElement('canvas');
+  newChart.id = 'graph'
+  document.getElementById('graph-container').append(newChart);
 
   const data = {
     labels: [allLabels[0]],
@@ -67,7 +74,7 @@ const createGraphs = (principal, dataByMonth) => {
       scales: {
         y: {
           min: 0,
-          max: Math.ceil(1.25 * allData.interestData[allData.interestData.length - 1] / 100) * 100 
+          max: Math.ceil(principal * 4 / 100) * 100 
         },
       },
       plugins: {
@@ -117,11 +124,7 @@ const createGraphs = (principal, dataByMonth) => {
     labels: ['Principal', 'Payments', 'Interest'],
     datasets: [{
       label: 'Total Balance',
-      data: [
-        principal, 
-        allData.paymentsData[allData.paymentsData.length -1] - principal,
-        allData.interestData[allData.interestData.length -1] - allData.paymentsData[allData.paymentsData.length -1]
-      ],
+      data: [principal, totalPayments, totalInterest],
       backgroundColor: [style.accentYellow, style.mainBlue, style.mainGreen]
     }]
   };
@@ -144,4 +147,5 @@ const createGraphs = (principal, dataByMonth) => {
     document.getElementById('pie'),
     pieConfig
   );
+
 };

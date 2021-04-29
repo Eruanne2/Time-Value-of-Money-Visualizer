@@ -1,5 +1,5 @@
 html {
-  font-family: "Architects Daughter", cursive;
+  font-family: "Hind Siliguri", sans-serif;
   color: #253C5B;
   background: #fcffac;
   background: radial-gradient(circle, #fcffac 0%, #b8ffe0 62%); }
@@ -16,7 +16,8 @@ img {
 #main-header {
   text-align: center;
   font-size: 50px;
-  margin: 50px; }
+  margin: 50px;
+  font-family: 'Architects Daughter', cursive; }
 
 main {
   display: flex;
@@ -42,25 +43,25 @@ form {
     border-radius: 5px;
     border: none;
     box-shadow: 0 0 10px lightblue;
-    font-family: "Architects Daughter", cursive;
+    font-family: "Hind Siliguri", sans-serif;
     font-size: 18px;
     padding-left: 10px; }
   form #term-text-input {
     width: 60px; }
   form select {
-    font-family: "Architects Daughter", cursive; }
+    font-family: "Hind Siliguri", sans-serif; }
   form .go {
     background: transparent;
     border: none;
     color: #1990FF;
     font-size: 20px;
-    font-family: "Architects Daughter", cursive; }
+    font-family: "Hind Siliguri", sans-serif; }
   form #present-value-div, form #future-value-div {
     box-sizing: border-box;
     padding-left: 80px; }
   form #clear-btn {
     background: transparent;
-    font-family: "Architects Daughter", cursive;
+    font-family: "Hind Siliguri", sans-serif;
     font-weight: 700;
     font-size: 16px;
     color: #1990FF;
@@ -80,7 +81,7 @@ form {
   height: 420px; }
   #charts > div {
     float: left;
-    width: 27%;
+    width: 29%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -97,6 +98,14 @@ form {
 
 #pie {
   margin: 10px; }
+
+#info-ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 24px; }
+  #info-ul li {
+    padding-left: 20px; }
 
 #graph-container {
   float: right;

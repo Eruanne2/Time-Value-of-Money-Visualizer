@@ -4,7 +4,7 @@ $accent-blue: #00EDFF;
 $accent-yellow: #F6FF07;
 $background-green: #F0FFF0;
 $line-blue: #253C5B;
-$font: 'Architects Daughter', cursive;
+$font: 'Hind Siliguri', sans-serif;
 
 html {
   font-family: $font;
@@ -29,6 +29,7 @@ img {
   text-align: center;
   font-size: 50px;
   margin: 50px;
+  font-family: 'Architects Daughter', cursive;
 }
 
 main {
@@ -115,7 +116,7 @@ form {
 
   > div {
     float: left;
-    width: 27%;
+    width: 29%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -136,6 +137,16 @@ form {
 
 #pie {
   margin: 10px;
+}
+
+#info-ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 24px;
+  li {
+    padding-left: 20px;
+  }
 }
 
 #graph-container {
