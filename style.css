@@ -34,7 +34,7 @@ form {
   form label {
     margin-top: 20px;
     margin-bottom: 2px;
-    font-size: 18px; }
+    font-size: 20px; }
     form label span.error {
       color: #c51616; }
   form input, form select {
@@ -94,6 +94,10 @@ form {
 #pie-container, #info-ul {
   width: 100%;
   height: 48%; }
+
+#pie {
+  height: 200px;
+  width: 200px; }
 
 #graph-container {
   float: right;

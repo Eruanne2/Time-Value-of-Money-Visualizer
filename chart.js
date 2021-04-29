@@ -82,7 +82,7 @@ const createGraphs = (principal, dataByMonth) => {
   };
 
   // create graph
-  graph = new Chart(
+  let graph = new Chart(
     document.getElementById('graph'),
     config
   );
@@ -131,13 +131,16 @@ const createGraphs = (principal, dataByMonth) => {
     data: pieData,
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
-        legend: false
+        legend: {
+          position: 'left'
+        }
       }
     },
   };
 
-  pie = new Chart(
+  let pie = new Chart(
     document.getElementById('pie'),
     pieConfig
   );
