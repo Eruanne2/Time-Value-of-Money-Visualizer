@@ -82,6 +82,16 @@ const createGraphs = (principal, dataByMonth) => {
             callback: val => formatter.format(val).slice(0, -3)
             }
         },
+        x: {
+          display: true,
+          title: {
+            display: true,
+            text: 'Months',
+            font: {
+              size: 16,
+            },
+          }
+        },
       },
       plugins: {
         filler: {
@@ -104,7 +114,7 @@ const createGraphs = (principal, dataByMonth) => {
 
   let fillGraph = setInterval(() => {
     const gData = graph.data;
-    if (gData.datasets[0].data.length === allLabels.length) { // once all data is displayed
+    if (gData.datasets[0].data.length === allLabels.length -1) { // once all data is displayed
       graph.data.labels = allLabels; // set labels
       clearInterval(fillGraph);
     }
