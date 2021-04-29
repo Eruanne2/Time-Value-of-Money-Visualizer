@@ -120,7 +120,7 @@ const createGraphs = (principal, dataByMonth) => {
       data: [
         principal, 
         allData.paymentsData[allData.paymentsData.length -1] - principal,
-        allData.interestData[allData.interestData.length -1] - allData.paymentsData[allData.paymentsData.length -1] - principal
+        allData.interestData[allData.interestData.length -1] - allData.paymentsData[allData.paymentsData.length -1]
       ],
       backgroundColor: [style.accentYellow, style.mainBlue, style.mainGreen]
     }]

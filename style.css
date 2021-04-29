@@ -96,8 +96,7 @@ form {
   height: 48%; }
 
 #pie {
-  height: 200px;
-  width: 200px; }
+  margin: 10px; }
 
 #graph-container {
   float: right;
