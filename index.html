@@ -21,12 +21,18 @@
 </head>
 
 <body class="container">
-    <h1 id='main-header'>Time Value of Money Visualizer</h1>
+  <img src="./triangle.png"/>
+  <h1 id='main-header'>Time Value of Money Visualizer</h1>
 
-    <main>
+  <main>
+    <section id='graph-container' class='hidden'>
+      <canvas id="graph"></canvas>
+    </section>
+
+    <div id='form-container'>
       <form>
         <label for='present-value-input'><span id='present-value-error' class='error hidden'>REQUIRED</span> Present Value</label>
-        <div>
+        <div id='present-value-div'>
           <input id='present-value-input' type='text'/>
           <button id='present-value-go' class='go'>GO >></button>
           <!--add absolutely positioned info box (display on hover)-->
@@ -64,7 +70,7 @@
         </div>
 
         <label for='future-value-input'><span id='future-value-error' class='error hidden'>REQUIRED</span> Future Value </label>
-        <div>
+        <div id='future-value-div'>
           <input id='future-value-input' type='text'/>
           <button id='future-value-go' class='go'>GO >></button>
           <!--add absolutely positioned info box (display on hover)-->
@@ -72,32 +78,31 @@
 
         <button id='clear-btn'>CLEAR</button>
       </form>
-      
-      <section id='graph-container'>
-        <canvas id="graph"></canvas>
-      </section>
-      
-      <aside>
-        <h1>Explore</h1>
-        <h2>How much does it really cost you?</h2>
-        <ul>
-          <li>a Starbucks drink</li>
-          <li>dinner at Chipotle</li>
-          <li>one SuperBowl ticket</li>
-        </ul>
-        <h2>How long would it take to save up for?</h2>
-        <ul>
-          <li>a 2021 Bugatti</li>
-          <li>a prive island</li>
-          <li>a medical degree</li>
-          <li>"The One" Bel Aire mansion</li>
-        </ul>
-      </aside>
-    </main>
-      
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="text/javascript" src="chart.js"></script>
-    <script type="text/javascript" src="app.js"></script>
+    </div>
+    
+    <!--
+    <aside>
+      <h1>Explore</h1>
+      <h2>How much does it really cost you?</h2>
+      <ul>
+        <li>a Starbucks drink</li>
+        <li>dinner at Chipotle</li>
+        <li>one SuperBowl ticket</li>
+      </ul>
+      <h2>How long would it take to save up for?</h2>
+      <ul>
+        <li>a 2021 Bugatti</li>
+        <li>a prive island</li>
+        <li>a medical degree</li>
+        <li>"The One" Bel Aire mansion</li>
+      </ul>
+    </aside>
+    -->
+  </main>
+    
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="text/javascript" src="chart.js"></script>
+  <script type="text/javascript" src="app.js"></script>
 </body>
 
 </html>

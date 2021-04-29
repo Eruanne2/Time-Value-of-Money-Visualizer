@@ -9,11 +9,21 @@ $font: 'Hind Siliguri', sans-serif;
 html {
   font-family: $font;
   color: $line-blue;
-  background-color: $background-green;
+  // background-color: $background-green;
+  background: rgb(252,255,172);
+  background: radial-gradient(circle, rgba(252,255,172,1) 0%, rgba(184,255,224,1) 62%);
+
 }
 
 .hidden {
   display: none;
+}
+
+img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
 }
 
 #main-header {
@@ -24,15 +34,19 @@ html {
 
 main {
   display: flex;
+  justify-content: space-around;
+  height: 1500px;
+}
+
+#form-container {
+  float: right;
+  width: 20%;
 }
 
 form {
-  float: left;
-  width: 25%;
-  margin: 0 50px 0 100px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 
   label {
     margin-top: 20px;
@@ -51,7 +65,8 @@ form {
 
   input, select {
     border-radius: 5px;
-    border: 1px solid $line-blue;
+    border: none;
+    box-shadow: 0 0 10px lightblue;
   }
 
   #term-text-input {
@@ -68,6 +83,11 @@ form {
     color: $main-blue;
     font-weight: 700;
     font-family: $font;
+  }
+
+  #present-value-div, #future-value-div {
+    box-sizing: border-box;
+    padding-left: 50px;
   }
 
   #clear-btn {
@@ -89,15 +109,20 @@ form {
 }
 
 #graph-container {
-  border: 1px solid $line-blue;
-  height: 550px;
-  width: 1300px;
+  float: left;
+  margin-top: 30px;
+  height: 420px;
+  width: 800px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px lightblue;
   background-color: #ffffff;
+
+  #graph {
+    margin: 20px;
+  }
 }
 
 aside {
-  float: right;
-  width: 20%;
-  margin: 0 50px;
+  margin: 50px;
 }
 

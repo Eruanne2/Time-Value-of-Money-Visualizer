@@ -54,10 +54,6 @@ const animateGraph = (principal, dataByMonth) => {
     }],
     animations: {
       duration: 0
-      // y: {
-      //   duration: 1000,
-      //   delay: 500
-      // }
     }
   };
 
@@ -69,7 +65,7 @@ const animateGraph = (principal, dataByMonth) => {
       scales: {
         y: {
           min: 0,
-          max: allData.interestData[allData.interestData.length - 1] + .10 * allData.interestData[allData.interestData.length - 1] 
+          max: Math.ceil(1.25 * allData.interestData[allData.interestData.length - 1] / 100) * 100 
         },
       },
       plugins: {
@@ -89,13 +85,14 @@ const animateGraph = (principal, dataByMonth) => {
     config
   );
 
-  // let intervalTime = 5000.0 / allLabels.length;
-  let intervalTime = 500;
+  let intervalTime = 100;
 
   let fillGraph = setInterval(() => {
     const gData = graph.data;
-    if (gData.labels.length === allLabels.length) clearInterval(fillGraph);
-  
+    if (gData.datasets[0].data.length === allLabels.length) {
+      graph.labels = allLabels;
+      clearInterval(fillGraph);
+    }
     gData.labels.push(allLabels[gData.labels.length])
     
     for (var i = 0; i < gData.datasets.length; ++i) {

@@ -1,10 +1,17 @@
 html {
   font-family: "Hind Siliguri", sans-serif;
   color: #253C5B;
-  background-color: #F0FFF0; }
+  background: #fcffac;
+  background: radial-gradient(circle, #fcffac 0%, #b8ffe0 62%); }
 
 .hidden {
   display: none; }
+
+img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1; }
 
 #main-header {
   text-align: center;
@@ -12,15 +19,18 @@ html {
   margin: 50px; }
 
 main {
-  display: flex; }
+  display: flex;
+  justify-content: space-around;
+  height: 1500px; }
+
+#form-container {
+  float: right;
+  width: 20%; }
 
 form {
-  float: left;
-  width: 25%;
-  margin: 0 50px 0 100px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; }
+  align-items: center; }
   form label {
     margin-top: 20px;
     margin-bottom: 2px;
@@ -32,7 +42,8 @@ form {
     height: 23px; }
   form input, form select {
     border-radius: 5px;
-    border: 1px solid #253C5B; }
+    border: none;
+    box-shadow: 0 0 10px lightblue; }
   form #term-text-input {
     width: 60px; }
   form select {
@@ -43,6 +54,9 @@ form {
     color: #1990FF;
     font-weight: 700;
     font-family: "Hind Siliguri", sans-serif; }
+  form #present-value-div, form #future-value-div {
+    box-sizing: border-box;
+    padding-left: 50px; }
   form #clear-btn {
     background: transparent;
     font-family: "Hind Siliguri", sans-serif;
@@ -58,14 +72,17 @@ form {
     cursor: pointer; }
 
 #graph-container {
-  border: 1px solid #253C5B;
-  height: 550px;
-  width: 1300px;
+  float: left;
+  margin-top: 30px;
+  height: 420px;
+  width: 800px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px lightblue;
   background-color: #ffffff; }
+  #graph-container #graph {
+    margin: 20px; }
 
 aside {
-  float: right;
-  width: 20%;
-  margin: 0 50px; }
+  margin: 50px; }
 
 /*# sourceMappingURL=style.css.map */

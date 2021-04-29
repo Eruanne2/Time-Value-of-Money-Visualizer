@@ -38,9 +38,14 @@ const calculatePresentValue = e => {
   e.preventDefault();
 
   // check that the proper field are filled in - display errors
-  if (termTextInput.value === '') { errors["termLength"].classList.remove('hidden'); return; }
-  if (interestInput.value === '') { errors["interestRate"].classList.remove('hidden'); return; }
-  if (futureValueInput.value === '') { errors["futureValue"].classList.remove('hidden'); return; }
+  let errorsPresent = false;
+  if (termTextInput.value === '') { errors["termLength"].classList.remove('hidden'); errorsPresent = true; }
+  if (interestInput.value === '') { errors["interestRate"].classList.remove('hidden'); errorsPresent = true; }
+  if (futureValueInput.value === '') { errors["futureValue"].classList.remove('hidden'); errorsPresent = true; }
+  if (errorsPresent) return;
+
+  // display graph
+  document.getElementById('graph-container').classList.remove('hidden');
 
   // calculate present value
   let vals = getValuesFromInput();
@@ -77,9 +82,14 @@ const calculatePresentValue = e => {
 const calculateFutureValue = e => {
   e.preventDefault();
   // check that the proper field are filled in - display errors
-  if (presentValueInput.value === '') { errors["presentValue"].classList.remove('hidden'); return; }
-  if (termTextInput.value === '') { errors["termLength"].classList.remove('hidden'); return; }
-  if (interestInput.value === '') { errors["interestRate"].classList.remove('hidden'); return; }
+  let errorsPresent = false;
+  if (presentValueInput.value === '') { errors["presentValue"].classList.remove('hidden'); errorsPresent = true; }
+  if (termTextInput.value === '') { errors["termLength"].classList.remove('hidden'); errorsPresent = true; }
+  if (interestInput.value === '') { errors["interestRate"].classList.remove('hidden'); errorsPresent = true; }
+  if (errorsPresent) return;
+
+  // display graph
+  document.getElementById('graph-container').classList.remove('hidden');
 
   // calculate value and fill in field
   let vals = getValuesFromInput();
