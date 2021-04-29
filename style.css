@@ -52,7 +52,7 @@ form {
     font-family: "Hind Siliguri", sans-serif;
     font-size: 16px;
     padding-left: 10px; }
-  form input:focus, form select:focus {
+  form input:focus {
     outline: none; }
   form #interest-container {
     width: 85px;

@@ -77,9 +77,19 @@ form {
     padding-left: 10px;
   }
 
-  input:focus, select:focus {
+  input:focus {
     outline: none;
   }
+
+  // hide arrows for number inputs
+  // input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  //   -webkit-appearance: none;
+  //   margin: 0;
+  // }
+
+  // input[type=number] {
+  //   -moz-appearance: textfield;
+  // }
 
   #interest-container {
     width: 85px;
