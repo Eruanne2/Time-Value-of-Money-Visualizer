@@ -32,8 +32,7 @@ img {
 #main-header {
   text-align: center;
   font-size: 50px;
-  margin: 50px;
-  // font-family: 'Architects Daughter', cursive;
+  margin: 60px;
 }
 
 main {
@@ -67,14 +66,35 @@ form {
     }
   }
   
-  input, select {
+  input, select, #interest-container {
     height: 26px;
+    background-color: #fff;
     border-radius: 5px;
     border: none;
     box-shadow: 0 0 10px lightblue;
     font-family: $font;
     font-size: 16px;
     padding-left: 10px;
+  }
+
+  input:focus, select:focus {
+    outline: none;
+  }
+
+  #interest-container {
+    width: 85px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+
+    #interest-input {
+      width: 60%;
+      padding: 0;
+      background-color: transparent;
+      box-shadow: 0 0 0;
+    }
+    p {
+      display: inline;
+    }
   }
 
   #term-text-input {

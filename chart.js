@@ -22,7 +22,7 @@ const createGraphs = (principal, dataByMonth) => {
   }
   allData.principalData = (new Array(dataByMonth.length)).fill(principal, 0, dataByMonth.length);
   for (idx in dataByMonth) {
-    allLabels.push(idx + 1);
+    allLabels.push(parseInt(idx) + 1);
     allData.paymentsData.push(principal + (dataByMonth[idx].payments));
     allData.interestData.push(principal + (dataByMonth[idx].payments) + dataByMonth[idx].interest);
   }
@@ -44,7 +44,7 @@ const createGraphs = (principal, dataByMonth) => {
   document.getElementById('graph-container').append(newChart);
 
   const data = {
-    labels: [allLabels[0]],
+    labels: [''],
     datasets: [{
       label: 'Principal',
       data: [allData.principalData[0]],
@@ -77,7 +77,10 @@ const createGraphs = (principal, dataByMonth) => {
       scales: {
         y: {
           min: 0,
-          max: Math.ceil(principal * 4 / 100) * 100 
+          max: Math.ceil(principal * 4 / 100) * 100,
+          ticks: {
+            callback: val => formatter.format(val).slice(0, -3)
+            }
         },
       },
       plugins: {
@@ -101,17 +104,19 @@ const createGraphs = (principal, dataByMonth) => {
 
   let fillGraph = setInterval(() => {
     const gData = graph.data;
-    if (gData.datasets[0].data.length === allLabels.length) {
-      graph.labels = allLabels;
+    if (gData.datasets[0].data.length === allLabels.length) { // once all data is displayed
+      graph.data.labels = allLabels; // set labels
       clearInterval(fillGraph);
     }
-    gData.labels.push(allLabels[gData.labels.length])
+
+    gData.labels.push(''); // update labels bc it won't work otherwise
     
     for (var i = 0; i < gData.datasets.length; ++i) {
       let data = gData.datasets[i].data
-      data.push(Object.values(allData)[i][data.length]);
+      data.push(Object.values(allData)[i][data.length]); // add next set of datapoints
     }
     graph.update();
+
   }, intervalTime);
 
 
