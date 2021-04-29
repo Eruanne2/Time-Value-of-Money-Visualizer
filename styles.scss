@@ -51,7 +51,8 @@ form {
   label {
     margin-top: 20px;
     margin-bottom: 2px;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 500;
 
     span.error {
       color: rgb(197, 22, 22);
@@ -59,12 +60,12 @@ form {
   }
   
   input, select {
-    height: 28px;
+    height: 26px;
     border-radius: 5px;
     border: none;
     box-shadow: 0 0 10px lightblue;
     font-family: $font;
-    font-size: 18px;
+    font-size: 16px;
     padding-left: 10px;
   }
 
@@ -82,6 +83,7 @@ form {
     color: $main-blue;
     font-size: 20px;
     font-family: $font;
+    font-weight: 700;
   }
 
   #present-value-div, #future-value-div {
