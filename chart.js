@@ -121,11 +121,11 @@ const createGraphs = (principal, dataByMonth) => {
   document.getElementById('pie-container').append(newPie);
 
   const pieData = {
-    labels: ['Principal', 'Payments', 'Interest'],
+    labels: ['Interest', 'Payments', 'Principal'],
     datasets: [{
       label: 'Total Balance',
-      data: [principal, totalPayments, totalInterest],
-      backgroundColor: [style.accentYellow, style.mainBlue, style.mainGreen]
+      data: [totalInterest, totalPayments, principal],
+      backgroundColor: [style.mainGreen, style.mainBlue, style.accentYellow]
     }]
   };
 
@@ -137,7 +137,7 @@ const createGraphs = (principal, dataByMonth) => {
       maintainAspectRatio: false,
       plugins: {
         legend: {
-          position: 'left'
+          position: 'right'
         }
       }
     },

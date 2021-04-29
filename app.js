@@ -46,13 +46,15 @@ const calculatePresentValue = e => {
   else Object.values(errors).forEach(err => err.classList.add('hidden'));
 
   // display graph
-  document.getElementById('charts').classList.remove('hidden');
+  document.querySelector('form').classList.add('slide');
+  document.getElementById('charts').classList.remove('invisible');
+  document.getElementById('charts').classList.add('fade');
 
   // calculate present value
   let vals = getValuesFromInput();
   vals.pv = 0;
   let dataByMonth = [];
-  let finalBalance = vals.fv;
+  // let finalBalance = vals.fv;
 
   for (let count = vals.t; count >= 1; count--){ // iterate through each month, starting with the last
     vals.fv = parseFloat(vals.fv) - parseFloat(vals.pmt); // subtract payment
@@ -91,7 +93,8 @@ const calculateFutureValue = e => {
   else Object.values(errors).forEach(err => err.classList.add('hidden'));
 
   // display graph
-  document.getElementById('charts').classList.remove('hidden');
+  document.querySelector('form').classList.add('slide');
+  document.getElementById('charts').classList.remove('invisible');
 
   // calculate value and fill in field
   let vals = getValuesFromInput();
