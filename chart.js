@@ -8,8 +8,10 @@ style = {
   font: "'Architects Daughter', cursive"
 }
 
-// animate graph
-const animateGraph = (principal, dataByMonth) => {
+// create graph
+const createGraphs = (principal, dataByMonth) => {
+
+  // CREATE LINE CHART
 
   // delete old chart and create new one
   document.getElementById('graph').remove();
@@ -102,4 +104,41 @@ const animateGraph = (principal, dataByMonth) => {
     graph.update();
   }, intervalTime);
 
+
+
+  // CREATE PIE CHART
+
+  document.getElementById('pie').remove();
+  let newPie = document.createElement('canvas');
+  newPie.id = 'pie'
+  document.getElementById('pie-container').append(newPie);
+
+  const pieData = {
+    labels: ['Principal', 'Payments', 'Interest'],
+    datasets: [{
+      label: 'Total Balance',
+      data: [
+        principal, 
+        allData.paymentsData[allData.paymentsData.length -1] - principal,
+        allData.interestData[allData.interestData.length -1] - allData.paymentsData[allData.paymentsData.length -1] - principal
+      ],
+      backgroundColor: [style.accentYellow, style.mainBlue, style.mainGreen]
+    }]
+  };
+
+  const pieConfig = {
+    type: 'pie',
+    data: pieData,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: false
+      }
+    },
+  };
+
+  pie = new Chart(
+    document.getElementById('pie'),
+    pieConfig
+  );
 };

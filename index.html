@@ -26,9 +26,17 @@
   <h1 id='main-header'>Time Value of Money Visualizer</h1>
 
   <main>
-    <section id='graph-container' class='hidden'>
-      <canvas id="graph"></canvas>
-    </section>
+    <div id='charts' >
+      <div>
+        <section id='pie-container'>
+          <canvas id='pie'></canvas>
+        </section>
+        <ul id='info-ul'></ul>
+      </div>
+      <section id='graph-container'>
+        <canvas id='graph'></canvas>
+      </section>
+    </div>
 
     <div id='form-container'>
       <form>

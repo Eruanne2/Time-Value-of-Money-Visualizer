@@ -46,7 +46,7 @@ const calculatePresentValue = e => {
   else Object.values(errors).forEach(err => err.classList.add('hidden'));
 
   // display graph
-  document.getElementById('graph-container').classList.remove('hidden');
+  document.getElementById('charts').classList.remove('hidden');
 
   // calculate present value
   let vals = getValuesFromInput();
@@ -77,7 +77,7 @@ const calculatePresentValue = e => {
   let principal = vals.pv;
 
   // trigger graph
-  animateGraph(principal, dataByMonth);
+  createGraphs(principal, dataByMonth);
 };
 
 const calculateFutureValue = e => {
@@ -91,7 +91,7 @@ const calculateFutureValue = e => {
   else Object.values(errors).forEach(err => err.classList.add('hidden'));
 
   // display graph
-  document.getElementById('graph-container').classList.remove('hidden');
+  document.getElementById('charts').classList.remove('hidden');
 
   // calculate value and fill in field
   let vals = getValuesFromInput();
@@ -113,7 +113,7 @@ const calculateFutureValue = e => {
   futureValueInput.value = vals.fv.toFixed(2); // display future value to user
 
   // trigger graph
-  animateGraph(principal, dataByMonth);
+  createGraphs(principal, dataByMonth);
 };
 
 const handleClear = e => {

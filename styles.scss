@@ -39,7 +39,7 @@ main {
 
 #form-container {
   float: right;
-  width: 25%;
+  width: 24%;
 }
 
 form {
@@ -64,6 +64,7 @@ form {
     box-shadow: 0 0 10px lightblue;
     font-family: $font;
     font-size: 18px;
+    padding-left: 10px;
   }
 
   #term-text-input {
@@ -84,7 +85,7 @@ form {
 
   #present-value-div, #future-value-div {
     box-sizing: border-box;
-    padding-left: 50px;
+    padding-left: 80px;
   }
 
   #clear-btn {
@@ -105,14 +106,39 @@ form {
   }
 }
 
-#graph-container {
+#charts {
   float: left;
   margin-top: 30px;
+  margin-left: 3%;
+  width: 74%;
   height: 420px;
-  width: 800px;
+
+  > div {
+    float: left;
+    width: 27%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+#graph-container, #pie-container, #info-ul {
   border-radius: 10px;
   box-shadow: 5px 5px 5px lightblue;
   background-color: #ffffff;
+}
+
+#pie-container, #info-ul {
+  width: 100%;
+  height: 48%;
+}
+
+#graph-container {
+  float: right;
+  width: 60%;
+  height: 420px;
+  width: 800px;
 
   #graph {
     margin: 20px;
