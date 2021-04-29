@@ -21,6 +21,9 @@ const errors = {
 
 const removeError = field => e => errors[field].classList.add('hidden');
 
+var formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+// call with formatter.format(arg)
+
 // link inputs and values
 const getValuesFromInput = () => {
   return {

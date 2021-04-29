@@ -8,6 +8,9 @@ style = {
   font: "'Hind Siliguri', sans-serif"
 }
 
+var formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+// call with formatter.format(arg)
+
 // create graph
 const createGraphs = (principal, dataByMonth) => {
   // harvest data from dataByMonth
@@ -27,9 +30,9 @@ const createGraphs = (principal, dataByMonth) => {
   const totalInterest = allData.interestData[allData.interestData.length -1] - allData.paymentsData[allData.paymentsData.length -1];
 
   // FILL OUT INFO BOX
-  document.getElementById('principal-li').innerText = `Principal: $${principal.toFixed(2)}`
-  document.getElementById('payments-li').innerText = `Total Payments: $${totalPayments.toFixed(2)}`
-  document.getElementById('interest-li').innerText = `Total Interest: $${totalInterest.toFixed(2)}`
+  document.getElementById('principal-li').innerText = `Principal: ${formatter.format(principal)}`
+  document.getElementById('payments-li').innerText = `Total Payments: ${formatter.format(totalPayments)}`
+  document.getElementById('interest-li').innerText = `Total Interest: ${formatter.format(totalInterest)}`
 
 
   // CREATE LINE CHART
@@ -124,7 +127,7 @@ const createGraphs = (principal, dataByMonth) => {
     labels: ['Interest', 'Payments', 'Principal'],
     datasets: [{
       label: 'Total Balance',
-      data: [totalInterest, totalPayments, principal],
+      data: [totalInterest.toFixed(2), totalPayments.toFixed(2), principal.toFixed(2)],
       backgroundColor: [style.mainGreen, style.mainBlue, style.accentYellow]
     }]
   };

@@ -54,7 +54,9 @@ form {
   form #term-text-input {
     width: 60px; }
   form select {
-    font-family: "Hind Siliguri", sans-serif; }
+    font-family: "Hind Siliguri", sans-serif;
+    height: 28px;
+    margin-left: 5px; }
   form .go {
     background: transparent;
     border: none;
