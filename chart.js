@@ -5,7 +5,7 @@ style = {
   accentYellow: '#F6FF07',
   backgroundGreen: '#F0FFF0',
   lineBlue: '#253C5B',
-  font: "'Hind Siliguri', sans-serif"
+  font: "'Architects Daughter', cursive"
 }
 
 // animate graph

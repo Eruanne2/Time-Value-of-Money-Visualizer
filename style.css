@@ -1,5 +1,5 @@
 html {
-  font-family: "Hind Siliguri", sans-serif;
+  font-family: "Architects Daughter", cursive;
   color: #253C5B;
   background: #fcffac;
   background: radial-gradient(circle, #fcffac 0%, #b8ffe0 62%); }
@@ -15,7 +15,7 @@ img {
 
 #main-header {
   text-align: center;
-  font-size: 30px;
+  font-size: 50px;
   margin: 50px; }
 
 main {
@@ -25,7 +25,7 @@ main {
 
 #form-container {
   float: right;
-  width: 20%; }
+  width: 25%; }
 
 form {
   display: flex;
@@ -34,32 +34,32 @@ form {
   form label {
     margin-top: 20px;
     margin-bottom: 2px;
-    font-weight: 500; }
+    font-size: 18px; }
     form label span.error {
-      color: #c51616;
-      font-weight: 700; }
-  form input {
-    height: 23px; }
+      color: #c51616; }
   form input, form select {
+    height: 28px;
     border-radius: 5px;
     border: none;
-    box-shadow: 0 0 10px lightblue; }
+    box-shadow: 0 0 10px lightblue;
+    font-family: "Architects Daughter", cursive;
+    font-size: 18px; }
   form #term-text-input {
     width: 60px; }
   form select {
-    font-family: "Hind Siliguri", sans-serif; }
+    font-family: "Architects Daughter", cursive; }
   form .go {
     background: transparent;
     border: none;
     color: #1990FF;
-    font-weight: 700;
-    font-family: "Hind Siliguri", sans-serif; }
+    font-size: 20px;
+    font-family: "Architects Daughter", cursive; }
   form #present-value-div, form #future-value-div {
     box-sizing: border-box;
     padding-left: 50px; }
   form #clear-btn {
     background: transparent;
-    font-family: "Hind Siliguri", sans-serif;
+    font-family: "Architects Daughter", cursive;
     font-weight: 700;
     font-size: 16px;
     color: #1990FF;

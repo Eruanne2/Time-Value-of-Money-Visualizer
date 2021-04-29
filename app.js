@@ -43,6 +43,7 @@ const calculatePresentValue = e => {
   if (interestInput.value === '') { errors["interestRate"].classList.remove('hidden'); errorsPresent = true; }
   if (futureValueInput.value === '') { errors["futureValue"].classList.remove('hidden'); errorsPresent = true; }
   if (errorsPresent) return;
+  else Object.values(errors).forEach(err => err.classList.add('hidden'));
 
   // display graph
   document.getElementById('graph-container').classList.remove('hidden');
@@ -87,6 +88,7 @@ const calculateFutureValue = e => {
   if (termTextInput.value === '') { errors["termLength"].classList.remove('hidden'); errorsPresent = true; }
   if (interestInput.value === '') { errors["interestRate"].classList.remove('hidden'); errorsPresent = true; }
   if (errorsPresent) return;
+  else Object.values(errors).forEach(err => err.classList.add('hidden'));
 
   // display graph
   document.getElementById('graph-container').classList.remove('hidden');
