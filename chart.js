@@ -69,6 +69,9 @@ const createGraphs = (principal, dataByMonth) => {
     }
   };
 
+  let maxY = Math.max((principal * 4), allData.interestData[allData.interestData.length-1])
+  debugger
+
   const config = {
     type: 'line',
     data,
@@ -77,7 +80,7 @@ const createGraphs = (principal, dataByMonth) => {
       scales: {
         y: {
           min: 0,
-          max: Math.ceil(principal * 4 / 100) * 100,
+          max: Math.ceil(maxY / 100) * 100,
           ticks: {
             callback: val => formatter.format(val).slice(0, -3)
             }
