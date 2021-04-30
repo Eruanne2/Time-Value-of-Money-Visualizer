@@ -22,7 +22,7 @@ html {
   opacity: 0;
 }
 
-img {
+#triangle {
   width: 100%;
   position: absolute;
   top: 0;
@@ -242,12 +242,32 @@ form {
 }
 
 #cost-container, #save-container {
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 680px;
+    margin-left: 50px;
+  }
     
-  div {
+  li {
     height: 150px;
     width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     background-color: #fff;
     box-shadow: 5px 5px 5px lightblue;
+  }
+
+  li:hover {
+    box-shadow: 5px 5px 15px lightblue;
+    cursor: pointer;
+
+    img:hover {
+      height: 100px;
+      width: 100px;
+    }
   }
 }
