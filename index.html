@@ -47,14 +47,14 @@
       <form>
         <label for='present-value-input'><span id='present-value-error' class='error hidden'>REQUIRED</span> Present Value</label>
         <div id='present-value-div'>
-          <input id='present-value-input' type='text'/>
+          <input id='present-value-input' type='text' autocomplete="off"/>
           <button id='present-value-go' class='go'>FIND >></button>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
 
         <label for='term-input'><span id='term-length-error' class='error hidden'>REQUIRED</span> Term </label>
         <div id='term-input-holder'>
-          <input id='term-text-input' type='text'/>
+          <input id='term-text-input' type='text' autocomplete="off"/>
           <select id='term-select-input'>
             <option value='12'>years</option>
             <option value='1'>months</option>
@@ -64,7 +64,7 @@
 
         <label for='interest-input'><span id='interest-error' class='error hidden'>REQUIRED</span> Annual Interest Rate </label>
         <div id='interest-container'>
-          <input id='interest-input' type='text'/>
+          <input id='interest-input' type='text' autocomplete="off"/>
           <p>%</p>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
@@ -80,13 +80,13 @@
 
         <label for='payment-input'> Monthly Payment Amount </label>
         <div>
-          <input id='payment-input' type='text'/>
+          <input id='payment-input' type='text' autocomplete="off"/>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
 
         <label for='future-value-input'><span id='future-value-error' class='error hidden'>REQUIRED</span> Future Value </label>
         <div id='future-value-div'>
-          <input id='future-value-input' type='text'/>
+          <input id='future-value-input' type='text' autocomplete="off"/>
           <button id='future-value-go' class='go'>FIND >></button>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
@@ -94,25 +94,6 @@
         <button id='clear-btn'>CLEAR</button>
       </form>
     </div>
-    
-    <!--
-    <aside>
-      <h1>Explore</h1>
-      <h2>How much does it really cost you?</h2>
-      <ul>
-        <li>a Starbucks drink</li>
-        <li>dinner at Chipotle</li>
-        <li>one SuperBowl ticket</li>
-      </ul>
-      <h2>How long would it take to save up for?</h2>
-      <ul>
-        <li>a 2021 Bugatti</li>
-        <li>a prive island</li>
-        <li>a medical degree</li>
-        <li>"The One" Bel Aire mansion</li>
-      </ul>
-    </aside>
-    -->
   </main>
 
   <div id='bar'>
