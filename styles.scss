@@ -11,7 +11,7 @@ html {
   color: $line-blue;
   background: rgb(252,255,172);
   background: radial-gradient(circle, rgba(252,255,172,1) 0%, rgba(184,255,224,1) 62%);
-  height: 1500px;
+  height: 1450px;
 }
 
 .hidden {
@@ -205,6 +205,8 @@ form {
   }
 }
 
+
+
 #bar {
   margin-top: 100px;
   width: 100%;
@@ -239,3 +241,13 @@ form {
 
 }
 
+#cost-container, #save-container {
+    
+  div {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 5px 5px 5px lightblue;
+  }
+}
