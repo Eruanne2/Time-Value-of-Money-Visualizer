@@ -169,18 +169,18 @@ form {
   }
 }
 
-#graph-container, #pie-container, #info-ul {
+section[id$="graph-container"], section[id$="pie-container"], #info-ul {
   border-radius: 10px;
   box-shadow: 5px 5px 5px lightblue;
   background-color: #ffffff;
 }
 
-#pie-container, #info-ul {
+section[id$="pie-container"], #info-ul {
   width: 100%;
   height: 48%;
 }
 
-#pie {
+canvas[id$="pie"] {
   margin: 15px;
 }
 
@@ -194,13 +194,13 @@ form {
   }
 }
 
-#graph-container {
+section[id$="graph-container"] {
   float: right;
   width: 60%;
   height: 420px;
   width: 800px;
 
-  #graph {
+  canvas[id$="graph"] {
     margin: 20px;
   }
 }
@@ -242,23 +242,25 @@ form {
 }
 
 #cost-container, #save-container {
-  ul {
+  .icon-list {
     display: flex;
+    float: left;
     flex-direction: column;
     justify-content: space-evenly;
     height: 680px;
     margin-left: 50px;
-  }
+    width: 180px;
     
-  li {
-    height: 150px;
-    width: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: #fff;
-    box-shadow: 5px 5px 5px lightblue;
+    li {
+      height: 150px;
+      width: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background-color: #fff;
+      box-shadow: 5px 5px 5px lightblue;
+    }
   }
 
   li:hover {
@@ -270,4 +272,17 @@ form {
       width: 100px;
     }
   }
+}
+
+
+.cost-container #charts, .save-container #charts {
+  float: right;
+
+  > div {
+    float: right;
+  }
+}
+
+#example-graph-container {
+  float: left;
 }

@@ -105,7 +105,7 @@ const handlePV = e => {
   vals = getValuesFromInput();
   vals.pv = 0;
 
-  calculatePV(vals)
+  calculatePV(vals, 'main')
   presentValueInput.value = mockState.pv.toFixed(2); // display present value to user
 }
 
@@ -129,13 +129,13 @@ const handleFV = e => {
   // calculate value and fill in field
   vals = getValuesFromInput();
   vals.fv = 0;
-  claculateFV(vals);
+  claculateFV(vals, 'main');
 
   futureValueInput.value = mockState.fv.toFixed(2); // display future value to user
 };
 
 // calculations and graph creation
-const calculatePV = vals => {
+const calculatePV = (vals, whichGraph) => {
   let dataByMonth = [];
 
   for (let count = vals.t; count >= 1; count--){ // iterate through each month, starting with the last
@@ -158,11 +158,11 @@ const calculatePV = vals => {
   };
   let principal = vals.pv;
   
-  createGraphs(principal, dataByMonth);
+  createGraphs(principal, dataByMonth, whichGraph);
   mockState = vals;
 }
 
-const claculateFV = vals => {
+const claculateFV = (vals, whichGraph) => {
   let principal = vals.pv;
   let dataByMonth = [];
 
@@ -177,9 +177,34 @@ const claculateFV = vals => {
     vals.pv = vals.fv; // set the next month's starting balance to this month's ending balance
   }
   
-  createGraphs(principal, dataByMonth);
+  createGraphs(principal, dataByMonth, whichGraph);
   mockState = vals;
 }
+
+const loadExample = example => {
+  mockState.i = .1
+  mockState.n = 12;
+  mockState.t = 30 * 12;
+  mockState.pmt = 0;
+  switch(example){
+    case 'starbucks':
+      mockState.pv = 4.00;
+      claculateFV(mockState, 'example');
+    case 'chipotle':
+        
+    case 'superbowl':
+          
+    case 'bugatti': 
+
+    case 'medical':
+
+    case 'mansion':
+
+    default:
+      return;
+  }
+}
+
 
 
 // add event listeners
@@ -193,5 +218,12 @@ interestInput.addEventListener('input', removeError('interestRate'));
 futureValueInput.addEventListener('input', removeError('futureValue'));
 futureValueGo.addEventListener('click', handleFV);
 clearBtn.addEventListener('click', handleClear);
+
+document.getElementById('starbucks-ex').addEventListener('click', loadExample('starbucks'));
+document.getElementById('chipotle-ex').addEventListener('click', loadExample('chipotle'));
+document.getElementById('superbowl-ex').addEventListener('click', loadExample('superbowl'));
+document.getElementById('bugatti-ex').addEventListener('click', loadExample('bugatti'));
+document.getElementById('medical-ex').addEventListener('click', loadExample('starbucks'));
+document.getElementById('mansion-ex').addEventListener('click', loadExample('mansion'));
 
 

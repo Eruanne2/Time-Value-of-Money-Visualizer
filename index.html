@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!--Revamp this so that it is longer than the viewport.
-  Think 'panels' in the Ally bank splash.
-  Have a section for the inputs (room to explain each when 
-  you hover over the go button), a section for the graph,
-  and a section for the 'explore' stuff. (the explore stuff
-  could have its own mini-graph to set it apart? or not.)
--->
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,8 +21,8 @@
   <main>
     <div id='charts' class='invisible'>
       <div>
-        <section id='pie-container'>
-          <canvas id='pie' width='200' height='200'></canvas>
+        <section id='main-pie-container'>
+          <canvas id='main-pie' width='200' height='200'></canvas>
         </section>
         <ul id='info-ul'>
           <li id='principal-li'></li>
@@ -38,8 +30,8 @@
           <li id='interest-li'></li>
         </ul>
       </div>
-      <section id='graph-container'>
-        <canvas id='graph'></canvas>
+      <section id='main-graph-container'>
+        <canvas id='main-graph'></canvas>
       </section>
     </div>
 
@@ -94,50 +86,46 @@
         <button id='clear-btn'>CLEAR</button>
       </form>
     </div>
-    
-    <!--
-    <aside>
-      <h1>Explore</h1>
-      <h2>How much does it really cost you?</h2>
-      <ul>
-        <li>a Starbucks drink</li>
-        <li>dinner at Chipotle</li>
-        <li>one SuperBowl ticket</li>
-      </ul>
-      <h2>How long would it take to save up for?</h2>
-      <ul>
-        <li>a 2021 Bugatti</li>
-        <li>a prive island</li>
-        <li>a medical degree</li>
-        <li>"The One" Bel Aire mansion</li>
-      </ul>
-    </aside>
-    -->
   </main>
 
   <div id='bar'>
     <h1>EXPLORE</h1>
     <ul>
       <h2 id='cost-header' class='selected'>How much does it really cost?</h2>
-      <h2 id='save-header' >What could you buy with a million dollars?</h2>
+      <h2 id='save-header' >How long would you have to save?</h2>
     </ul>
   </div>
 
   <section id='cost-container'>
-    <h1>See how much it really costs you in the long run...</h1>
-    <ul>
-      <li><img src="./images/starbucks.png" height="80" width="80"/></li>
-      <li><img src="./images/chipotle.png" height="80" width="80"/></li>
-      <li><img src="./images/superbowl.png" height="80" width="80"/></li>
+    <h1>See how much it really costs in the long run</h1>
+    <ul class='icon-list'>
+      <li id='starbucks-ex'><img src="./images/starbucks.png" height="80" width="80"/></li>
+      <li id='chipotle-ex'><img src="./images/chipotle.png" height="80" width="80"/></li>
+      <li id='superbowl-ex'><img src="./images/superbowl.png" height="80" width="80"/></li>
     </ul>
+    <div id='charts'>
+      <section id='example-graph-container'>
+        <canvas id='example-graph'></canvas>
+      </section>
+      <div>
+        <section id='example-pie-container'>
+          <canvas id='example-pie' width='200' height='200'></canvas>
+        </section>
+        <ul id='info-ul'>
+          <li id='principal-li'></li>
+          <li id='payments-li'></li>
+          <li id='interest-li'></li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section id='save-container' class='hidden'>
-    <h1>See how long it would take for a million dollars to buy...</h1>
-    <ul>
-      <li><img src="./images/bugatti.png" height="80" width="80"/></li>
-      <li><img src="./images/medical.png" height="80" width="80"/></li>
-      <li><img src="./images/mansion.png" height="80" width="80"/></li>
+    <h1>See how long you would need to save to afford it</h1>
+    <ul class='icon-list'>
+      <li id='bugatti-ex'><img src="./images/bugatti.png" height="80" width="80"/></li>
+      <li id='medical-ex'><img src="./images/medical.png" height="80" width="80"/></li>
+      <li id='mansion-ex'><img src="./images/mansion.png" height="80" width="80"/></li>
     </ul>
   </section>
     
