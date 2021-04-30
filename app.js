@@ -1,5 +1,6 @@
 
 // DOM elements
+const mainHeader = document.getElementById('main-header');
 const presentValueInput = document.getElementById('present-value-input');
 const presentValueGo = document.getElementById('present-value-go');
 const termTextInput = document.getElementById('term-text-input');
@@ -23,6 +24,14 @@ const removeError = field => e => errors[field].classList.add('hidden');
 
 var formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 // call with formatter.format(arg)
+
+const resetPage = e => {
+  e.preventDefault();
+  handleClear(new Event('click'));
+  document.querySelector('form').classList.remove('slide');
+  document.getElementById('charts').classList.add('invisible');
+  document.getElementById('charts').classList.remove('fade');
+}
 
 // link inputs and values
 const getValuesFromInput = () => {
@@ -136,6 +145,7 @@ const handleClear = e => {
 };
 
 // add event listeners
+mainHeader.addEventListener('click', resetPage);
 presentValueInput.addEventListener('input', removeError('presentValue'));
 presentValueGo.addEventListener('click', calculatePresentValue);
 termTextInput.addEventListener('input', removeError('termLength'));

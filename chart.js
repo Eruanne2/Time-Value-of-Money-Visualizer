@@ -83,6 +83,7 @@ const createGraphs = (principal, dataByMonth) => {
             }
         },
         x: {
+          max: allLabels[allLabels.length -1],
           display: true,
           title: {
             display: true,

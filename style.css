@@ -21,6 +21,9 @@ img {
   font-size: 50px;
   margin: 60px; }
 
+#main-header:hover {
+  cursor: pointer; }
+
 main {
   display: flex;
   justify-content: space-around;
