@@ -1,6 +1,9 @@
 
 // DOM elements
 const mainHeader = document.getElementById('main-header');
+const costHeader = document.getElementById('cost-header');
+const saveHeader = document.getElementById('save-header');
+
 const presentValueInput = document.getElementById('present-value-input');
 const presentValueGo = document.getElementById('present-value-go');
 const termTextInput = document.getElementById('term-text-input');
@@ -33,6 +36,20 @@ const resetPage = e => {
   document.getElementById('charts').classList.remove('fade');
 }
 
+const toggleTab = e => {
+  if (costHeader.classList.contains('selected')) {
+    costHeader.classList.remove('selected');
+    document.getElementById('cost-container').classList.add('hidden');
+    saveHeader.classList.add('selected');
+    document.getElementById('save-container').classList.remove('hidden');
+  } else {
+    saveHeader.classList.remove('selected');
+    document.getElementById('save-container').classList.add('hidden');
+    costHeader.classList.add('selected');
+    document.getElementById('cost-container').classList.remove('hidden');
+  }
+}
+
 // link inputs and values
 const getValuesFromInput = () => {
   return {
@@ -52,6 +69,7 @@ const calculatePresentValue = e => {
   // check that the proper field are filled in - display errors
   let errorsPresent = false;
   if (termTextInput.value === '') { errors["termLength"].classList.remove('hidden'); errorsPresent = true; }
+  if (parseInt(futureValueInput.value) === 0) { errors["futureValue"].classList.remove('hidden'); errorsPresent = true; }
   if (interestInput.value === '') { errors["interestRate"].classList.remove('hidden'); errorsPresent = true; }
   if (futureValueInput.value === '') { errors["futureValue"].classList.remove('hidden'); errorsPresent = true; }
   if (errorsPresent) return;
@@ -99,6 +117,7 @@ const calculateFutureValue = e => {
   // check that the proper field are filled in - display errors
   let errorsPresent = false;
   if (presentValueInput.value === '') { errors["presentValue"].classList.remove('hidden'); errorsPresent = true; }
+  if (parseInt(presentValueInput.value) === 0) { errors["presentValue"].classList.remove('hidden'); errorsPresent = true; }
   if (termTextInput.value === '') { errors["termLength"].classList.remove('hidden'); errorsPresent = true; }
   if (interestInput.value === '') { errors["interestRate"].classList.remove('hidden'); errorsPresent = true; }
   if (errorsPresent) return;
@@ -107,6 +126,7 @@ const calculateFutureValue = e => {
   // display graph
   document.querySelector('form').classList.add('slide');
   document.getElementById('charts').classList.remove('invisible');
+  document.getElementById('charts').classList.add('fade');
 
   // calculate value and fill in field
   let vals = getValuesFromInput();
@@ -146,6 +166,8 @@ const handleClear = e => {
 
 // add event listeners
 mainHeader.addEventListener('click', resetPage);
+costHeader.addEventListener('click', toggleTab);
+saveHeader.addEventListener('click', toggleTab);
 presentValueInput.addEventListener('input', removeError('presentValue'));
 presentValueGo.addEventListener('click', calculatePresentValue);
 termTextInput.addEventListener('input', removeError('termLength'));

@@ -2,7 +2,8 @@ html {
   font-family: "Hind Siliguri", sans-serif;
   color: #253C5B;
   background: #fcffac;
-  background: radial-gradient(circle, #fcffac 0%, #b8ffe0 62%); }
+  background: radial-gradient(circle, #fcffac 0%, #b8ffe0 62%);
+  height: 1500px; }
 
 .hidden {
   display: none; }
@@ -21,13 +22,12 @@ img {
   font-size: 50px;
   margin: 60px; }
 
-#main-header:hover {
+#main-header:hover, #cost-header, #save-header {
   cursor: pointer; }
 
 main {
   display: flex;
-  justify-content: space-around;
-  height: 1500px; }
+  justify-content: space-around; }
 
 #form-container {
   float: right;
@@ -140,7 +140,28 @@ form {
   #graph-container #graph {
     margin: 20px; }
 
-aside {
-  margin: 50px; }
+#bar {
+  margin-top: 100px;
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #1990FF; }
+  #bar h1 {
+    font-size: 50px;
+    font-weight: 700; }
+  #bar ul {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 700; }
+    #bar ul h2:last-child {
+      margin-left: 40px; }
+  #bar .selected {
+    color: #1ddb33;
+    padding-bottom: 4px;
+    border-bottom: 3px solid #1ddb33; }
 
 /*# sourceMappingURL=style.css.map */
