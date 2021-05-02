@@ -5,15 +5,15 @@ const costHeader = document.getElementById('cost-header');
 const saveHeader = document.getElementById('save-header');
 
 const presentValueInput = document.getElementById('present-value-input');
-const presentValueGo = document.getElementById('present-value-go');
 const termTextInput = document.getElementById('term-text-input');
 const termSelectInput = document.getElementById('term-select-input');
 const interestInput = document.getElementById('interest-input');
 const compoundsSelect = document.getElementById('compounds-select');
 const paymentInput = document.getElementById('payment-input');
 const futureValueInput = document.getElementById('future-value-input');
-const futureValueGo = document.getElementById('future-value-go');
+const presentValueGo = document.getElementById('present-value-go');
 const clearBtn = document.getElementById('clear-btn');
+const futureValueGo = document.getElementById('future-value-go');
 const errors = {
   presentValue: document.getElementById('present-value-error'),
   termLength: document.getElementById('term-length-error'),
@@ -70,6 +70,21 @@ const toggleTab = e => {
     costHeader.classList.add('selected');
     document.getElementById('cost-container').classList.remove('hidden');
   }
+}
+
+const showInfoBox = e => {
+  debugger
+  if (document.getElementById('charts').classList.contains('invisible')) {
+    if (e.currentTarget.id === 'present-value-go')
+      document.getElementById('pv-info-box').classList.remove('hidden');
+    if (e.currentTarget.id === 'future-value-go')
+      document.getElementById('fv-info-box').classList.remove('hidden');
+  } else return;
+};
+
+const hideInfoBox = e => {
+  document.getElementById('pv-info-box').classList.add('hidden');
+  document.getElementById('fv-info-box').classList.add('hidden');
 }
 
 // link inputs and values
@@ -209,16 +224,21 @@ const loadExample = example => {
 
 // add event listeners
 mainHeader.addEventListener('click', resetPage);
-costHeader.addEventListener('click', toggleTab);
-saveHeader.addEventListener('click', toggleTab);
 presentValueInput.addEventListener('input', removeError('presentValue'));
-presentValueGo.addEventListener('click', handlePV);
 termTextInput.addEventListener('input', removeError('termLength'));
 interestInput.addEventListener('input', removeError('interestRate'));
 futureValueInput.addEventListener('input', removeError('futureValue'));
-futureValueGo.addEventListener('click', handleFV);
-clearBtn.addEventListener('click', handleClear);
 
+presentValueGo.addEventListener('click', handlePV);
+presentValueGo.addEventListener('mouseover', showInfoBox);
+presentValueGo.addEventListener('mouseout', hideInfoBox);
+clearBtn.addEventListener('click', handleClear);
+futureValueGo.addEventListener('click', handleFV);
+futureValueGo.addEventListener('mouseover', showInfoBox);
+futureValueGo.addEventListener('mouseout', hideInfoBox);
+
+costHeader.addEventListener('click', toggleTab);
+saveHeader.addEventListener('click', toggleTab);
 document.getElementById('starbucks-ex').addEventListener('click', loadExample('starbucks'));
 document.getElementById('chipotle-ex').addEventListener('click', loadExample('chipotle'));
 document.getElementById('superbowl-ex').addEventListener('click', loadExample('superbowl'));
