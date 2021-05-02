@@ -1,15 +1,15 @@
 .slide {
   animation-duration: 1s;
   animation-name: slidein;
-  margin-left: 0;
+  margin-left: 4%;
 }
 
 @keyframes slidein {
   from {
-    margin-left: -40%;
+    margin-left: -36%;
   }
   to {
-    margin-left: 0;
+    margin-left: 4%;
   }
 }
 

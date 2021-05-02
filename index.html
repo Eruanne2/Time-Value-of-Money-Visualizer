@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Value of Money Visualizer</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/animations.css">
     <link rel="shortcut icon" href="#">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;700&display=swap" rel="stylesheet" type="text/css">
@@ -16,6 +16,10 @@
 
 <body class="container">
   <img id='triangle' src="./images/triangle.png"/>
+  <div id='pv-info-box' >Given a <span>Term</span>, <span>Interest Rate</span>, <span>Monthly Payment</span> (optional), and <span>Future Value</span>, calculate the <span>Present Value</span> of a balance.</div>
+  <div id='fv-info-box' >Given a <span>Present Value</span>, <span>Term</span>, <span>Interest Rate</span>, and <span>Monthly Payment</span> (optional), calculate the <span>Future Value</span> of a balance.</div>
+
+
   <h1 id='main-header'>Time Value of Money Visualizer</h1>
 
   <main>
@@ -40,10 +44,9 @@
         <label for='present-value-input'><span id='present-value-error' class='error hidden'>REQUIRED</span> Present Value</label>
         <div id='present-value-div'>
           <input id='present-value-input' type='text' autocomplete="off"/>
-          <button id='present-value-go' class='go'>FIND >></button>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
-
+        
         <label for='term-input'><span id='term-length-error' class='error hidden'>REQUIRED</span> Term </label>
         <div id='term-input-holder'>
           <input id='term-text-input' type='text' autocomplete="off"/>
@@ -53,14 +56,14 @@
           </select>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
-
+        
         <label for='interest-input'><span id='interest-error' class='error hidden'>REQUIRED</span> Annual Interest Rate </label>
         <div id='interest-container'>
           <input id='interest-input' type='text' autocomplete="off"/>
           <p>%</p>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
-
+        
         <label for='compounds-select'> Interest Compounds </label>
         <div>
           <select id='compounds-select'>
@@ -75,15 +78,18 @@
           <input id='payment-input' type='text' autocomplete="off"/>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
-
+        
         <label for='future-value-input'><span id='future-value-error' class='error hidden'>REQUIRED</span> Future Value </label>
         <div id='future-value-div'>
           <input id='future-value-input' type='text' autocomplete="off"/>
-          <button id='future-value-go' class='go'>FIND >></button>
           <!--add absolutely positioned info box (display on hover)-->
         </div>
-
-        <button id='clear-btn'>CLEAR</button>
+        
+        <ul id='submit-btns'>
+          <button id='present-value-go' class='submit-btn'>PV</button>
+          <button id='clear-btn' class='submit-btn'>CLEAR</button>
+          <button id='future-value-go' class='submit-btn'>FV</button>
+        </ul>
       </form>
     </div>
   </main>

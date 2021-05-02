@@ -22,11 +22,42 @@ html {
   opacity: 0;
 }
 
+
 #triangle {
   width: 100%;
   position: absolute;
   top: 0;
   z-index: -1;
+}
+
+#pv-info-box, #fv-info-box {
+  position: absolute;
+  top: 50%;
+  width: 15%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 10px #fff;
+  line-height: 1.5;
+  text-align: center;
+  color: $main-green;
+  font-weight: 500;
+  padding: 5px;
+
+  span {
+    font-weight: 700;
+  }
+
+  span:last-of-type {
+    color: $main-blue;
+  }
+}
+
+#pv-info-box {
+  left: 10%;
+}
+
+#fv-info-box {
+  left: 70%;
 }
 
 #main-header {
@@ -44,8 +75,6 @@ main {
   justify-content: space-around;
 }
 
-
-
 #form-container {
   float: right;
   width: 24%;
@@ -53,7 +82,7 @@ main {
 
 form {
   position: absolute;
-  margin-left: -40%;
+  margin-left: -36%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,21 +149,7 @@ form {
     margin-left: 5px;
   }
 
-  .go {
-    background: transparent;
-    border: none;
-    color: $main-blue;
-    font-size: 20px;
-    font-family: $font;
-    font-weight: 700;
-  }
-
-  #present-value-div, #future-value-div {
-    box-sizing: border-box;
-    padding-left: 80px;
-  }
-
-  #clear-btn {
+  .submit-btn {
     background: transparent;
     font-family: $font;
     font-weight: 700;
@@ -142,9 +157,8 @@ form {
     color: $main-blue;
     border: 2px solid $main-blue;
     border-radius: 10px;
-    width: 75px;
-    padding: 2px;
-    margin-top: 20px;
+    padding: 2px 10px;
+    margin: 20px 6px 0;
   }
 
   button:hover {
@@ -196,7 +210,7 @@ canvas[id$="pie"] {
 
 section[id$="graph-container"] {
   float: right;
-  width: 60%;
+  width: 67%;
   height: auto;
 
   canvas[id$="graph"] {

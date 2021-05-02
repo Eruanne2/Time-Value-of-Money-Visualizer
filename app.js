@@ -43,9 +43,9 @@ const handleClear = e => {
   Object.values(errors).forEach(err => err.classList.add('hidden'));
   presentValueInput.value = '';
   termTextInput.value = '';
-  termSelectInput.value = 'years';
+  termSelectInput.value = '12';
   interestInput.value = '';
-  compoundsSelect.value = 'monthly';
+  compoundsSelect.value = '12';
   paymentInput.value = '';
   futureValueInput.value = '';
 };
