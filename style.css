@@ -135,8 +135,7 @@ canvas[id$="pie"] {
 section[id$="graph-container"] {
   float: right;
   width: 60%;
-  height: 420px;
-  width: 800px; }
+  height: auto; }
   section[id$="graph-container"] canvas[id$="graph"] {
     margin: 20px; }
 
