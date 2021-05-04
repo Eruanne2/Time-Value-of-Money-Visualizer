@@ -73,7 +73,6 @@ const toggleTab = e => {
 }
 
 const showInfoBox = e => {
-  debugger
   if (document.getElementById('charts').classList.contains('invisible')) {
     if (e.currentTarget.id === 'present-value-go')
       document.getElementById('pv-info-box').classList.remove('hidden');

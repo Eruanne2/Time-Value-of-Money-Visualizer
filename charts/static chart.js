@@ -17,10 +17,6 @@ const animateGraph = (principal, dataByMonth) => {
   newChart.id = 'myChart'
   document.getElementById('graph-container').append(newChart);
 
-  console.log('now the graph appears')
-  console.log('principal', principal)
-  console.log('dataByMonth', dataByMonth);
-
   const labels = [];
   const paymentsData = [];
   const interestData = [];
