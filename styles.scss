@@ -4,11 +4,18 @@ $accent-blue: #00EDFF;
 $accent-yellow: #F6FF07;
 $background-green: #F0FFF0;
 $line-blue: #253C5B;
+
+$purple: #bb86fc;
+$blue: #3700b3;
+$teal: #03dac5;
+$red: #cf6679;
+
 $font: 'Hind Siliguri', sans-serif;
 
 html {
   font-family: $font;
-  color: $line-blue;
+  color: $blue;
+  background-color: #000;
 }
 
 .hidden {
@@ -34,7 +41,7 @@ main {
 
 #form-container {
   width: 20%;
-  border: 1px solid red;
+  margin-left: 50px;
 }
 
 form {
@@ -139,10 +146,11 @@ form {
 #charts {
   display: flex;
   width: 75%;
+  margin-right: 50px;
 
   #graph-container {
-    width: 80%;
-    height: 500px;
+    width: 75%;
+    height: 420px;
   }
 
   > div {
@@ -151,15 +159,13 @@ form {
     flex-direction: column;
     justify-content: space-between;
 
-    ul {
+    > * {
       height: 200px;
       width: 100%;
+      margin-left: 20px;
     }
   }
   
-  * {
-    border: 1px solid red;
-  }
 }
 
 
@@ -172,15 +178,15 @@ form {
 //   margin: 15px;
 // }
 
-// #info-ul {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-around;
-//   font-size: 24px;
-//   li {
-//     padding-left: 20px;
-//   }
-// }
+#info-ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 20px;
+
+}
 
 // #graph-container {
 //   float: left;
