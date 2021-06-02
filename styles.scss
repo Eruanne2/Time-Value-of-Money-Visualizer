@@ -145,38 +145,34 @@ form {
 
 #charts {
   display: flex;
-  width: 75%;
+  width: 80%;
   margin-right: 50px;
 
   #graph-container {
-    width: 75%;
-    height: 420px;
+    width: 70%;
+    height: 462px;
+    border: 1px solid #3147fd;
+    border-radius: 3px;
+    padding: 20px;
   }
 
   > div {
-    width: 25%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    
     > * {
       height: 200px;
       width: 100%;
       margin-left: 20px;
+      border: 1px solid #3147fd;
+      border-radius: 3px;
+      padding: 20px;
     }
   }
   
 }
-
-
-// #pie-container, #info-ul {
-//   width: 100%;
-//   height: 48%;
-// }
-
-// #pie {
-//   margin: 15px;
-// }
 
 #info-ul {
   display: flex;
@@ -187,14 +183,3 @@ form {
   margin: 20px;
 
 }
-
-// #graph-container {
-//   float: left;
-//   width: 60%;
-//   height: 420px;
-//   width: 800px;
-
-//   #graph {
-//     margin: 20px;
-//   }
-// }

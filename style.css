@@ -24,20 +24,26 @@ main {
 
 #charts {
   display: flex;
-  width: 75%;
+  width: 80%;
   margin-right: 50px; }
   #charts #graph-container {
-    width: 75%;
-    height: 420px; }
+    width: 70%;
+    height: 462px;
+    border: 1px solid #3147fd;
+    border-radius: 3px;
+    padding: 20px; }
   #charts > div {
-    width: 25%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-between; }
     #charts > div > * {
       height: 200px;
       width: 100%;
-      margin-left: 20px; }
+      margin-left: 20px;
+      border: 1px solid #3147fd;
+      border-radius: 3px;
+      padding: 20px; }
 
 #info-ul {
   display: flex;
