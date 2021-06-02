@@ -1,20 +1,9 @@
 html {
   font-family: "Hind Siliguri", sans-serif;
-  color: #253C5B;
-  background: #fcffac;
-  background: radial-gradient(circle, #fcffac 0%, #b8ffe0 62%); }
+  color: #253C5B; }
 
 .hidden {
   display: none; }
-
-.invisible {
-  opacity: 0; }
-
-img {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  z-index: -1; }
 
 #main-header {
   text-align: center;
@@ -26,121 +15,15 @@ img {
 
 main {
   display: flex;
-  justify-content: space-around;
-  height: 1500px; }
+  justify-content: space-around; }
 
 #form-container {
-  float: right;
   width: 24%; }
 
-form {
-  position: absolute;
-  margin-left: -40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
-  form label {
-    margin-top: 20px;
-    margin-bottom: 2px;
-    font-size: 18px;
-    font-weight: 500; }
-    form label span.error {
-      color: #c51616; }
-  form input, form select, form #interest-container {
-    height: 26px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 0 10px lightblue;
-    font-family: "Hind Siliguri", sans-serif;
-    font-size: 16px;
-    padding-left: 10px; }
-  form input:focus {
-    outline: none; }
-  form #interest-container {
-    width: 85px;
-    padding-top: 1px;
-    padding-bottom: 1px; }
-    form #interest-container #interest-input {
-      width: 60%;
-      padding: 0;
-      background-color: transparent;
-      box-shadow: 0 0 0; }
-    form #interest-container p {
-      display: inline; }
-  form #term-text-input {
-    width: 60px; }
-  form select {
-    font-family: "Hind Siliguri", sans-serif;
-    height: 28px;
-    margin-left: 5px; }
-  form .go {
-    background: transparent;
-    border: none;
-    color: #1990FF;
-    font-size: 20px;
-    font-family: "Hind Siliguri", sans-serif;
-    font-weight: 700; }
-  form #present-value-div, form #future-value-div {
-    box-sizing: border-box;
-    padding-left: 80px; }
-  form #clear-btn {
-    background: transparent;
-    font-family: "Hind Siliguri", sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: #1990FF;
-    border: 2px solid #1990FF;
-    border-radius: 10px;
-    width: 75px;
-    padding: 2px;
-    margin-top: 20px; }
-  form button:hover {
-    cursor: pointer; }
-
 #charts {
-  float: left;
-  margin-top: 30px;
-  margin-left: 3%;
-  width: 74%;
-  height: 420px; }
-  #charts > div {
-    float: left;
-    width: 29%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; }
-
-#graph-container, #pie-container, #info-ul {
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px lightblue;
-  background-color: #ffffff; }
-
-#pie-container, #info-ul {
-  width: 100%;
-  height: 48%; }
-
-#pie {
-  margin: 15px; }
-
-#info-ul {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  font-size: 24px; }
-  #info-ul li {
-    padding-left: 20px; }
-
-#graph-container {
-  float: right;
-  width: 60%;
-  height: 420px;
-  width: 800px; }
-  #graph-container #graph {
-    margin: 20px; }
-
-aside {
-  margin: 50px; }
+  display: flex; }
+  #charts #graph-container {
+    width: 74%;
+    height: 420px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -28,9 +28,6 @@ var formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'U
 const resetPage = e => {
   e.preventDefault();
   handleClear(new Event('click'));
-  document.querySelector('form').classList.remove('slide');
-  document.getElementById('charts').classList.add('invisible');
-  document.getElementById('charts').classList.remove('fade');
 }
 
 // link inputs and values
@@ -56,11 +53,6 @@ const calculatePresentValue = e => {
   if (futureValueInput.value === '') { errors["futureValue"].classList.remove('hidden'); errorsPresent = true; }
   if (errorsPresent) return;
   else Object.values(errors).forEach(err => err.classList.add('hidden'));
-
-  // display graph
-  document.querySelector('form').classList.add('slide');
-  document.getElementById('charts').classList.remove('invisible');
-  document.getElementById('charts').classList.add('fade');
 
   // calculate present value
   let vals = getValuesFromInput();
@@ -104,9 +96,6 @@ const calculateFutureValue = e => {
   if (errorsPresent) return;
   else Object.values(errors).forEach(err => err.classList.add('hidden'));
 
-  // display graph
-  document.querySelector('form').classList.add('slide');
-  document.getElementById('charts').classList.remove('invisible');
 
   // calculate value and fill in field
   let vals = getValuesFromInput();
@@ -153,5 +142,3 @@ interestInput.addEventListener('input', removeError('interestRate'));
 futureValueInput.addEventListener('input', removeError('futureValue'));
 futureValueGo.addEventListener('click', calculateFutureValue);
 clearBtn.addEventListener('click', handleClear);
-
-

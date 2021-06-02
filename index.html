@@ -1,21 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!--Revamp this so that it is longer than the viewport.
-  Think 'panels' in the Ally bank splash.
-  Have a section for the inputs (room to explain each when 
-  you hover over the go button), a section for the graph,
-  and a section for the 'explore' stuff. (the explore stuff
-  could have its own mini-graph to set it apart? or not.)
--->
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Value of Money Visualizer</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="animations.css">
     <link rel="shortcut icon" href="#">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;700&display=swap" rel="stylesheet" type="text/css">
@@ -23,34 +14,17 @@
 </head>
 
 <body class="container">
-  <img src="./triangle.png"/>
   <h1 id='main-header'>Time Value of Money Visualizer</h1>
 
   <main>
-    <div id='charts' class='invisible'>
-      <div>
-        <section id='pie-container'>
-          <canvas id='pie' width='200' height='200'></canvas>
-        </section>
-        <ul id='info-ul'>
-          <li id='principal-li'></li>
-          <li id='payments-li'></li>
-          <li id='interest-li'></li>
-        </ul>
-      </div>
-      <section id='graph-container'>
-        <canvas id='graph'></canvas>
-      </section>
-    </div>
 
     <div id='form-container'>
       <form>
         <label for='present-value-input'><span id='present-value-error' class='error hidden'>REQUIRED</span> Present Value</label>
         <div id='present-value-div'>
           <input id='present-value-input' type='text'/>
-          <button id='present-value-go' class='go'>FIND >></button>
-          <!--add absolutely positioned info box (display on hover)-->
         </div>
+        <button id='present-value-go' class='go'>FIND >></button>
 
         <label for='term-input'><span id='term-length-error' class='error hidden'>REQUIRED</span> Term </label>
         <div id='term-input-holder'>
@@ -59,14 +33,12 @@
             <option value='12'>years</option>
             <option value='1'>months</option>
           </select>
-          <!--add absolutely positioned info box (display on hover)-->
         </div>
 
         <label for='interest-input'><span id='interest-error' class='error hidden'>REQUIRED</span> Annual Interest Rate </label>
         <div id='interest-container'>
           <input id='interest-input' type='text'/>
           <p>%</p>
-          <!--add absolutely positioned info box (display on hover)-->
         </div>
 
         <label for='compounds-select'> Interest Compounds </label>
@@ -81,38 +53,33 @@
         <label for='payment-input'> Monthly Payment Amount </label>
         <div>
           <input id='payment-input' type='text'/>
-          <!--add absolutely positioned info box (display on hover)-->
         </div>
 
         <label for='future-value-input'><span id='future-value-error' class='error hidden'>REQUIRED</span> Future Value </label>
         <div id='future-value-div'>
           <input id='future-value-input' type='text'/>
-          <button id='future-value-go' class='go'>FIND >></button>
-          <!--add absolutely positioned info box (display on hover)-->
         </div>
+        <button id='future-value-go' class='go'>FIND >></button>
 
         <button id='clear-btn'>CLEAR</button>
       </form>
     </div>
-    
-    <!--
-    <aside>
-      <h1>Explore</h1>
-      <h2>How much does it really cost you?</h2>
-      <ul>
-        <li>a Starbucks drink</li>
-        <li>dinner at Chipotle</li>
-        <li>one SuperBowl ticket</li>
-      </ul>
-      <h2>How long would it take to save up for?</h2>
-      <ul>
-        <li>a 2021 Bugatti</li>
-        <li>a prive island</li>
-        <li>a medical degree</li>
-        <li>"The One" Bel Aire mansion</li>
-      </ul>
-    </aside>
-    -->
+
+    <div id='charts'>
+      <section id='graph-container'>
+        <canvas id='graph'></canvas>
+      </section>
+      <div>
+        <section id='pie-container'>
+          <canvas id='pie' width='200' height='200'></canvas>
+        </section>
+        <ul id='info-ul'>
+          <li id='principal-li'></li>
+          <li id='payments-li'></li>
+          <li id='interest-li'></li>
+        </ul>
+      </div>
+    </div>
   </main>
     
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
