@@ -19,12 +19,17 @@
   <main>
 
     <div id='form-container'>
+      <div id='form-header'>
+        <h1>CALCULATE</h1>
+        <h2 id='pv-tab'>PRESENT VALUE</h2>
+        <h2 id='fv-tab'>FUTURE VALUE</h2>
+      </div>
       <form>
         <label for='present-value-input'><span id='present-value-error' class='error hidden'>REQUIRED</span> Present Value</label>
         <div id='present-value-div'>
           <input id='present-value-input' type='text'/>
         </div>
-        <button id='present-value-go' class='go'>FIND >></button>
+        <!-- <button id='present-value-go' class='go'>FIND >></button> -->
 
         <label for='term-input'><span id='term-length-error' class='error hidden'>REQUIRED</span> Term </label>
         <div id='term-input-holder'>
@@ -59,9 +64,12 @@
         <div id='future-value-div'>
           <input id='future-value-input' type='text'/>
         </div>
-        <button id='future-value-go' class='go'>FIND >></button>
+        <!-- <button id='future-value-go' class='go'>FIND >></button> -->
 
-        <button id='clear-btn'>CLEAR</button>
+        <div id='btn-container'>
+          <button id='clear-btn'>CLEAR</button>
+          <button id='calculate-btn'>CALCULATE</button>
+        </div>
       </form>
     </div>
 
