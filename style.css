@@ -22,16 +22,66 @@ main {
   width: 20%;
   margin-left: 50px; }
 
+form {
+  color: #03dac5;
+  height: 462px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; }
+  form label {
+    margin-top: 20px;
+    margin-bottom: 2px;
+    font-size: 18px;
+    font-weight: 500; }
+    form label span.error {
+      color: #cf6679; }
+  form input, form select, form #interest-container {
+    background-color: #000;
+    color: #bb86fc;
+    border: 1px solid #3700b3;
+    border-top: none;
+    border-right: none;
+    padding: 5px;
+    font-family: "Hind Siliguri", sans-serif;
+    font-size: 16px; }
+  form input:focus {
+    outline: none; }
+  form #interest-container {
+    width: 85px;
+    padding-top: 1px;
+    padding-bottom: 1px; }
+    form #interest-container #interest-input {
+      width: 60%;
+      padding: 0;
+      background-color: transparent;
+      border: none; }
+    form #interest-container p {
+      display: inline; }
+  form #term-text-input {
+    width: 60px; }
+  form #clear-btn {
+    background: transparent;
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #cf6679;
+    border: none;
+    width: 75px;
+    padding: 2px;
+    margin-top: 20px; }
+
 #charts {
   display: flex;
-  width: 80%;
+  width: 70%;
   margin-right: 50px; }
   #charts #graph-container {
     width: 70%;
     height: 462px;
     border: 1px solid #3147fd;
     border-radius: 3px;
-    padding: 20px; }
+    padding: 20px;
+    display: flex;
+    align-items: center; }
   #charts > div {
     width: 20%;
     display: flex;
@@ -52,5 +102,9 @@ main {
   font-size: 24px;
   font-weight: 700;
   margin: 20px; }
+  #info-ul li:first-of-type {
+    color: #bb86fc; }
+  #info-ul li:last-of-type {
+    color: #03dac5; }
 
 /*# sourceMappingURL=style.css.map */

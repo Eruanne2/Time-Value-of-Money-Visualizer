@@ -45,35 +45,39 @@ main {
 }
 
 form {
-//   display: flex;
-//   flex-direction: column;
-//   // align-items: center;
+  color: $teal;
+  height: 462px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 
-//   label {
-//     margin-top: 20px;
-//     margin-bottom: 2px;
-//     font-size: 18px;
-//     font-weight: 500;
+  label {
+    margin-top: 20px;
+    margin-bottom: 2px;
+    font-size: 18px;
+    font-weight: 500;
 
-//     span.error {
-//       color: rgb(197, 22, 22);
-//     }
-//   }
+    span.error {
+      color: $red;
+    }
+  }
   
-//   input, select, #interest-container {
-//     height: 26px;
-//     background-color: #fff;
-//     border-radius: 5px;
-//     border: none;
-//     box-shadow: 0 0 10px lightblue;
-//     font-family: $font;
-//     font-size: 16px;
-//     padding-left: 10px;
-//   }
+  input, select, #interest-container {
+    // height: 26px;
+    background-color: #000;
+    color: $purple;
+    border: 1px solid $blue;
+    border-top: none;
+    border-right: none;
+    padding: 5px;
+    font-family: $font;
+    font-size: 16px;
+    // box-shadow: 0 0 10px lightblue;
+  }
 
-//   input:focus {
-//     outline: none;
-//   }
+  input:focus {
+    outline: none;
+  }
 
 //   // hide arrows for number inputs
 //   // input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
@@ -85,58 +89,51 @@ form {
 //   //   -moz-appearance: textfield;
 //   // }
 
-//   #interest-container {
-//     width: 85px;
-//     padding-top: 1px;
-//     padding-bottom: 1px;
+  #interest-container {
+    width: 85px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 
-//     #interest-input {
-//       width: 60%;
-//       padding: 0;
-//       background-color: transparent;
-//       box-shadow: 0 0 0;
-//     }
-//     p {
-//       display: inline;
-//     }
-//   }
+    #interest-input {
+      width: 60%;
+      padding: 0;
+      background-color: transparent;
+      border: none;
+    }
+    p {
+      display: inline;
+    }
+  }
 
-//   #term-text-input {
-//     width: 60px;
-//   }
+  #term-text-input {
+    width: 60px;
+  }
 
-//   select {
-//     font-family: $font;
-//     height: 28px;
-//     margin-left: 5px;
-//   }
-
-//   .go {
-//     background: transparent;
-//     border: none;
-//     color: $main-blue;
-//     font-size: 20px;
-//     font-family: $font;
-//     font-weight: 700;
-//   }
+  // .go {
+  //   background: transparent;
+  //   border: none;
+  //   color: $main-blue;
+  //   font-size: 20px;
+  //   font-family: $font;
+  //   font-weight: 700;
+  // }
 
 //   #present-value-div, #future-value-div {
 //     box-sizing: border-box;
 //     padding-left: 80px;
 //   }
 
-//   #clear-btn {
-//     background: transparent;
-//     font-family: $font;
-//     font-weight: 700;
-//     font-size: 16px;
-//     color: $main-blue;
-//     border: 2px solid $main-blue;
-//     border-radius: 10px;
-//     width: 75px;
-//     padding: 2px;
-//     margin-top: 20px;
-//   }
+  #clear-btn {
+    background: transparent;
+    font-family: $font;
+    font-weight: 700;
+    font-size: 16px;
+    color: $red;
+    border: none;
+    width: 75px;
+    padding: 2px;
+    margin-top: 20px;
+  }
 
 //   button:hover {
 //     cursor: pointer;
@@ -145,7 +142,7 @@ form {
 
 #charts {
   display: flex;
-  width: 80%;
+  width: 70%;
   margin-right: 50px;
 
   #graph-container {
@@ -154,6 +151,8 @@ form {
     border: 1px solid #3147fd;
     border-radius: 3px;
     padding: 20px;
+    display: flex;
+    align-items: center;
   }
 
   > div {
@@ -181,5 +180,12 @@ form {
   font-size: 24px;
   font-weight: 700;
   margin: 20px;
+  
+  li:first-of-type {
+    color: $purple;
+  }
 
+  li:last-of-type {
+    color: $teal;
+  }
 }
