@@ -10,6 +10,8 @@ const compoundsSelect = document.getElementById('compounds-select');
 const paymentInput = document.getElementById('payment-input');
 const futureValueInput = document.getElementById('future-value-input');
 const calculateBtn = document.getElementById('calculate-btn');
+const displayFV = document.getElementById('display-fv');
+const displayPV = document.getElementById('display-pv');
 const errors = {
   presentValue: document.getElementById('present-value-error'),
   termLength: document.getElementById('term-length-error'),
@@ -100,7 +102,9 @@ const calculatePresentValue = e => {
     dataByMonth[i].interest += dataByMonth[i-1].interest;
   };
   
-  presentValueInput.value = vals.pv.toFixed(2); // display present value to user
+  displayPV.value = 'Present Value: ' + vals.pv.toFixed(2); // display present value to user
+  displayPV.classList.remove('hidden');
+  displayFV.classList.add('hidden');
   let principal = vals.pv;
 
   // trigger graph
@@ -135,7 +139,9 @@ const calculateFutureValue = e => {
     vals.pv = vals.fv; // set the next month's starting balance to this month's ending balance
   }
 
-  futureValueInput.value = vals.fv.toFixed(2); // display future value to user
+  displayFV.value = 'Future Value: ' + vals.fv.toFixed(2); // display future value to user
+  displayFV.classList.remove('hidden');
+  displayPV.classList.add('hidden');
 
   // trigger graph
   createGraphs(principal, dataByMonth);
