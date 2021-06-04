@@ -38,21 +38,30 @@ main {
 }
 
 
-
 #form-container {
   width: 20%;
   margin-left: 50px;
-}
-
-#form-header {
-  display: flex;
 
   h1 {
     font-size: 24px;
   }
+}
+
+#tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 
   h2 {
     font-size: 20px;
+  }
+
+  h2.not-selected {
+    color: #140043;
+  }
+
+  h2:hover {
+    cursor: pointer;
   }
 }
 

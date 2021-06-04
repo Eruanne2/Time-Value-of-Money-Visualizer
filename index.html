@@ -19,14 +19,13 @@
   <main>
 
     <div id='form-container'>
-      <div id='form-header'>
-        <h1>CALCULATE</h1>
-        <h2 id='pv-tab'>PRESENT VALUE</h2>
+      <div id='tabs'>
         <h2 id='fv-tab'>FUTURE VALUE</h2>
+        <h2 id='pv-tab' class='not-selected'>PRESENT VALUE</h2>
       </div>
       <form>
-        <label for='present-value-input' id='pv-label'><span id='present-value-error' class='error hidden'>REQUIRED</span> Present Value</label>
-        <input id='present-value-input' type='text'/>
+        <label for='present-value-input' id='pv-label' class='hidden'><span id='present-value-error' class='error hidden'>REQUIRED</span> Present Value</label>
+        <input id='present-value-input' type='text' class='hidden'/>
 
         <label for='term-input'><span id='term-length-error' class='error hidden'>REQUIRED</span> Term </label>
         <div id='term-input-holder'>

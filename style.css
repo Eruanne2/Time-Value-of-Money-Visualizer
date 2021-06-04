@@ -21,13 +21,19 @@ main {
 #form-container {
   width: 20%;
   margin-left: 50px; }
-
-#form-header {
-  display: flex; }
-  #form-header h1 {
+  #form-container h1 {
     font-size: 24px; }
-  #form-header h2 {
+
+#tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px; }
+  #tabs h2 {
     font-size: 20px; }
+  #tabs h2.not-selected {
+    color: #140043; }
+  #tabs h2:hover {
+    cursor: pointer; }
 
 form {
   color: #03dac5;

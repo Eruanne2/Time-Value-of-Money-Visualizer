@@ -1,18 +1,14 @@
 
 // DOM elements
-const mainHeader = document.getElementById('main-header');
 const pvTab = document.getElementById('pv-tab');
 const fvTab = document.getElementById('fv-tab');
 const presentValueInput = document.getElementById('present-value-input');
-// const presentValueGo = document.getElementById('present-value-go');
 const termTextInput = document.getElementById('term-text-input');
 const termSelectInput = document.getElementById('term-select-input');
 const interestInput = document.getElementById('interest-input');
 const compoundsSelect = document.getElementById('compounds-select');
 const paymentInput = document.getElementById('payment-input');
 const futureValueInput = document.getElementById('future-value-input');
-// const futureValueGo = document.getElementById('future-value-go');
-const clearBtn = document.getElementById('clear-btn');
 const calculateBtn = document.getElementById('calculate-btn');
 const errors = {
   presentValue: document.getElementById('present-value-error'),
@@ -53,6 +49,8 @@ const openPVTab = e => {
   document.getElementById('pv-label').classList.add('hidden');
   futureValueInput.classList.remove('hidden');
   document.getElementById('fv-label').classList.remove('hidden');
+  pvTab.classList.remove('not-selected')
+  fvTab.classList.add('not-selected')
 }
 const openFVTab = e => {
   calculateBtn.removeEventListener('click', calculatePresentValue);
@@ -61,6 +59,8 @@ const openFVTab = e => {
   document.getElementById('pv-label').classList.remove('hidden');
   futureValueInput.classList.add('hidden');
   document.getElementById('fv-label').classList.add('hidden');
+  pvTab.classList.add('not-selected')
+  fvTab.classList.remove('not-selected')
 }
 
 // calculations
@@ -155,11 +155,12 @@ const handleClear = e => {
 };
 
 // add event listeners
-mainHeader.addEventListener('click', resetPage);
+document.getElementById('main-header').addEventListener('click', resetPage);
 presentValueInput.addEventListener('input', removeError('presentValue'));
-// presentValueGo.addEventListener('click', calculatePresentValue);
+pvTab.addEventListener('click', openPVTab);
 termTextInput.addEventListener('input', removeError('termLength'));
 interestInput.addEventListener('input', removeError('interestRate'));
 futureValueInput.addEventListener('input', removeError('futureValue'));
-// futureValueGo.addEventListener('click', calculateFutureValue);
-clearBtn.addEventListener('click', handleClear);
+fvTab.addEventListener('click', openFVTab);
+document.getElementById('clear-btn').addEventListener('click', handleClear);
+calculateBtn.addEventListener('click', calculateFutureValue);
