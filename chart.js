@@ -9,7 +9,7 @@ style = {
   blue: '#3700b3',
   teal: '#03dac5',
   red: '#cf6679',
-  font: "'Hind Siliguri', sans-serif"
+  font: "'Cairo', sans-serif"
 }
 
 var formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });

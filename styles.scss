@@ -10,7 +10,7 @@ $blue: #3700b3;
 $teal: #03dac5;
 $red: #cf6679;
 
-$font: 'Hind Siliguri', sans-serif;
+$font: 'Cairo', sans-serif;
 
 html {
   font-family: $font;
@@ -51,6 +51,7 @@ main {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  color: $purple;
 
   h2 {
     font-size: 20px;
@@ -97,6 +98,10 @@ form {
 
   input:focus {
     outline: none;
+  }
+
+  #present-value-input, #future-value-input {
+    width: 190px;
   }
 
 //   // hide arrows for number inputs
