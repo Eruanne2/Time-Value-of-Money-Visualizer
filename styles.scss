@@ -48,11 +48,11 @@ main {
   display: flex;
 
   h1 {
-    font-size: 18px;
+    font-size: 24px;
   }
 
   h2 {
-    font-size: 14px;
+    font-size: 20px;
   }
 }
 
@@ -120,20 +120,6 @@ form {
     width: 60px;
   }
 
-  // .go {
-  //   background: transparent;
-  //   border: none;
-  //   color: $main-blue;
-  //   font-size: 20px;
-  //   font-family: $font;
-  //   font-weight: 700;
-  // }
-
-//   #present-value-div, #future-value-div {
-//     box-sizing: border-box;
-//     padding-left: 80px;
-//   }
-
   #btn-container {
     
     #clear-btn, #calculate-btn {
@@ -155,9 +141,6 @@ form {
 
   }
 
-//   button:hover {
-//     cursor: pointer;
-//   }
 }
 
 #charts {

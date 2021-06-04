@@ -25,9 +25,9 @@ main {
 #form-header {
   display: flex; }
   #form-header h1 {
-    font-size: 18px; }
+    font-size: 24px; }
   #form-header h2 {
-    font-size: 14px; }
+    font-size: 20px; }
 
 form {
   color: #03dac5;

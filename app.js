@@ -1,16 +1,19 @@
 
 // DOM elements
 const mainHeader = document.getElementById('main-header');
+const pvTab = document.getElementById('pv-tab');
+const fvTab = document.getElementById('fv-tab');
 const presentValueInput = document.getElementById('present-value-input');
-const presentValueGo = document.getElementById('present-value-go');
+// const presentValueGo = document.getElementById('present-value-go');
 const termTextInput = document.getElementById('term-text-input');
 const termSelectInput = document.getElementById('term-select-input');
 const interestInput = document.getElementById('interest-input');
 const compoundsSelect = document.getElementById('compounds-select');
 const paymentInput = document.getElementById('payment-input');
 const futureValueInput = document.getElementById('future-value-input');
-const futureValueGo = document.getElementById('future-value-go');
+// const futureValueGo = document.getElementById('future-value-go');
 const clearBtn = document.getElementById('clear-btn');
+const calculateBtn = document.getElementById('calculate-btn');
 const errors = {
   presentValue: document.getElementById('present-value-error'),
   termLength: document.getElementById('term-length-error'),
@@ -40,6 +43,14 @@ const getValuesFromInput = () => {
     t: parseFloat(termTextInput.value) * parseFloat(termSelectInput.value), // time in months
     pmt: parseFloat(paymentInput.value) || 0                                // monthly payment amount
   };
+}
+
+// toggle tabs
+const openPVTab = e => {
+  // remove calculateFutureValue event listener from calculate-btn
+  // add calculatePresentValue event listener to calculate-btn
+  // remove pv field from from
+  // add fv field to form
 }
 
 // calculations
@@ -136,9 +147,9 @@ const handleClear = e => {
 // add event listeners
 mainHeader.addEventListener('click', resetPage);
 presentValueInput.addEventListener('input', removeError('presentValue'));
-presentValueGo.addEventListener('click', calculatePresentValue);
+// presentValueGo.addEventListener('click', calculatePresentValue);
 termTextInput.addEventListener('input', removeError('termLength'));
 interestInput.addEventListener('input', removeError('interestRate'));
 futureValueInput.addEventListener('input', removeError('futureValue'));
-futureValueGo.addEventListener('click', calculateFutureValue);
+// futureValueGo.addEventListener('click', calculateFutureValue);
 clearBtn.addEventListener('click', handleClear);
