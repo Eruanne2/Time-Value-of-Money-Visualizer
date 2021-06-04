@@ -47,10 +47,20 @@ const getValuesFromInput = () => {
 
 // toggle tabs
 const openPVTab = e => {
-  // remove calculateFutureValue event listener from calculate-btn
-  // add calculatePresentValue event listener to calculate-btn
-  // remove pv field from from
-  // add fv field to form
+  calculateBtn.removeEventListener('click', calculateFutureValue);
+  calculateBtn.addEventListener('click', calculatePresentValue);
+  presentValueInput.classList.add('hidden');
+  document.getElementById('pv-label').classList.add('hidden');
+  futureValueInput.classList.remove('hidden');
+  document.getElementById('fv-label').classList.remove('hidden');
+}
+const openFVTab = e => {
+  calculateBtn.removeEventListener('click', calculatePresentValue);
+  calculateBtn.addEventListener('click', calculateFutureValue);
+  presentValueInput.classList.remove('hidden');
+  document.getElementById('pv-label').classList.remove('hidden');
+  futureValueInput.classList.add('hidden');
+  document.getElementById('fv-label').classList.add('hidden');
 }
 
 // calculations
