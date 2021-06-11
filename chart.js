@@ -16,7 +16,7 @@ var formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'U
 // call with formatter.format(arg)
 
 // create graph
-const createGraphs = (principal, dataByMonth, whichGraph) => {
+const createGraphs = (principal, dataByMonth) => {
   // harvest data from dataByMonth
   let allLabels = [];
   let allData = {
@@ -42,10 +42,10 @@ const createGraphs = (principal, dataByMonth, whichGraph) => {
   // CREATE LINE CHART
 
   // delete old chart and create new one
-    document.getElementById(`${whichGraph}-graph`).remove();
-    let newChart = document.createElement('canvas');
-    newChart.id = `${whichGraph}-graph`
-    document.getElementById(`${whichGraph}-graph-container`).append(newChart);
+  document.getElementById('graph').remove();
+  let newChart = document.createElement('canvas');
+  newChart.id = 'graph'
+  document.getElementById('graph-container').append(newChart);
 
   const data = {
     labels: [''],
@@ -73,8 +73,6 @@ const createGraphs = (principal, dataByMonth, whichGraph) => {
     }
   };
 
-  let maxY = Math.max((principal * 4), allData.interestData[allData.interestData.length-1])
-
   const config = {
     type: 'line',
     data,
@@ -83,7 +81,7 @@ const createGraphs = (principal, dataByMonth, whichGraph) => {
       scales: {
         y: {
           min: 0,
-          max: Math.ceil(maxY * 1.2 / 100) * 100,
+          max: Math.ceil(principal * 4 / 100) * 100,
           ticks: {
             callback: val => formatter.format(val).slice(0, -3)
             }
@@ -113,11 +111,11 @@ const createGraphs = (principal, dataByMonth, whichGraph) => {
 
   // create graph
   let graph = new Chart(
-    document.getElementById(`${whichGraph}-graph`),
+    document.getElementById('graph'),
     config
   );
 
-  let intervalTime = (allLabels.length < 120) ? 100 : 3000 / allLabels.length;
+  let intervalTime = 100;
 
   let fillGraph = setInterval(() => {
     const gData = graph.data;
@@ -140,10 +138,10 @@ const createGraphs = (principal, dataByMonth, whichGraph) => {
 
   // CREATE PIE CHART
 
-  document.getElementById(`${whichGraph}-pie`).remove();
+  document.getElementById('pie').remove();
   let newPie = document.createElement('canvas');
-  newPie.id = `${whichGraph}-pie`
-  document.getElementById(`${whichGraph}-pie-container`).append(newPie);
+  newPie.id = 'pie'
+  document.getElementById('pie-container').append(newPie);
 
   const pieData = {
     labels: ['Interest', 'Payments', 'Principal'],
@@ -169,7 +167,7 @@ const createGraphs = (principal, dataByMonth, whichGraph) => {
   };
 
   let pie = new Chart(
-    document.getElementById(`${whichGraph}-pie`),
+    document.getElementById('pie'),
     pieConfig
   );
 
