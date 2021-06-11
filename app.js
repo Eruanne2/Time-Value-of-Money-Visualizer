@@ -41,9 +41,9 @@ const handleClear = e => {
   Object.values(errors).forEach(err => err.classList.add('hidden'));
   presentValueInput.value = '';
   termTextInput.value = '';
-  termSelectInput.value = 'years';
+  termSelectInput.value = '12';
   interestInput.value = '';
-  compoundsSelect.value = 'monthly';
+  compoundsSelect.value = '12';
   paymentInput.value = '';
   futureValueInput.value = '';
 };
@@ -211,20 +211,6 @@ const calculateFutureValue = e => {
 
   // trigger graph
   createGraphs(principal, dataByMonth);
-};
-
-
-const handleClear = e => {
-  e.preventDefault()
-  
-  Object.values(errors).forEach(err => err.classList.add('hidden'));
-  presentValueInput.value = '';
-  termTextInput.value = '';
-  termSelectInput.value = '12';
-  interestInput.value = '';
-  compoundsSelect.value = '12';
-  paymentInput.value = '';
-  futureValueInput.value = '';
 };
 
 // add event listeners
