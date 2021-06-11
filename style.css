@@ -1,62 +1,72 @@
 html {
-  font-family: "Hind Siliguri", sans-serif;
-  color: #253C5B;
-  background: #fcffac;
-  background: radial-gradient(circle, #fcffac 0%, #b8ffe0 62%);
-  height: 1450px; }
+  font-family: "Cairo", sans-serif;
+  color: #3700b3;
+  background-color: #000; }
 
 .hidden {
-  display: none; }
-
-.invisible {
-  opacity: 0; }
-
-#triangle {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  z-index: -1; }
+  display: none; 
+}
 
 #main-header {
   text-align: center;
   font-size: 50px;
-  margin: 60px; }
+  margin: 60px; 
+}
 
 #main-header:hover, #cost-header, #save-header {
-  cursor: pointer; }
+  cursor: pointer; 
+}
 
 main {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-between; 
+}
 
 #form-container {
-  float: right;
-  width: 24%; }
+  width: 20%;
+  margin-left: 50px; }
+  #form-container h1 {
+    font-size: 24px; }
+
+#tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #bb86fc; }
+  #tabs h2 {
+    font-size: 20px; }
+  #tabs h2.not-selected {
+    color: #140043; }
+  #tabs h2:hover {
+    cursor: pointer; }
 
 form {
-  position: absolute;
-  margin-left: -40%;
+  color: #03dac5;
+  height: 462px;
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  justify-content: space-evenly; }
   form label {
     margin-top: 20px;
     margin-bottom: 2px;
     font-size: 18px;
     font-weight: 500; }
     form label span.error {
-      color: #c51616; }
+      color: #cf6679; }
   form input, form select, form #interest-container {
-    height: 26px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 0 10px lightblue;
-    font-family: "Hind Siliguri", sans-serif;
-    font-size: 16px;
-    padding-left: 10px; }
+    background-color: #000;
+    color: #bb86fc;
+    border: 1px solid #3700b3;
+    border-top: none;
+    border-right: none;
+    padding: 5px;
+    padding-left: 8px;
+    font-family: "Cairo", sans-serif;
+    font-size: 16px; }
   form input:focus {
     outline: none; }
+  form #present-value-input, form #future-value-input {
+    width: 190px; }
   form #interest-container {
     width: 85px;
     padding-top: 1px;
@@ -65,135 +75,60 @@ form {
       width: 60%;
       padding: 0;
       background-color: transparent;
-      box-shadow: 0 0 0; }
+      border: none; }
     form #interest-container p {
       display: inline; }
   form #term-text-input {
     width: 60px; }
-  form select {
-    font-family: "Hind Siliguri", sans-serif;
-    height: 28px;
-    margin-left: 5px; }
-  form .go {
+  form #btn-container #clear-btn, form #btn-container #calculate-btn {
     background: transparent;
-    border: none;
-    color: #1990FF;
-    font-size: 20px;
-    font-family: "Hind Siliguri", sans-serif;
-    font-weight: 700; }
-  form #present-value-div, form #future-value-div {
-    box-sizing: border-box;
-    padding-left: 80px; }
-  form #clear-btn {
-    background: transparent;
-    font-family: "Hind Siliguri", sans-serif;
+    font-family: "Cairo", sans-serif;
     font-weight: 700;
     font-size: 16px;
-    color: #1990FF;
-    border: 2px solid #1990FF;
-    border-radius: 10px;
-    width: 75px;
-    padding: 2px;
-    margin-top: 20px; }
-  form button:hover {
-    cursor: pointer; }
+    color: #cf6679;
+    border: none;
+    margin-top: 10px;
+    width: 50px;
+    text-align: left;
+    margin-right: 60px; }
+  form #btn-container #calculate-btn {
+    color: #3700b3; }
 
 #charts {
-  float: left;
-  margin-top: 30px;
-  margin-left: 3%;
-  width: 74%;
-  height: 420px; }
+  display: flex;
+  width: 70%;
+  margin-right: 50px; }
+  #charts #graph-container {
+    width: 70%;
+    height: 462px;
+    border: 1px solid #3147fd;
+    border-radius: 3px;
+    padding: 20px;
+    display: flex;
+    align-items: center; }
   #charts > div {
-    float: left;
-    width: 29%;
-    height: 100%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-between; }
-
-section[id$="graph-container"], section[id$="pie-container"], #info-ul {
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px lightblue;
-  background-color: #ffffff; }
-
-section[id$="pie-container"], #info-ul {
-  width: 100%;
-  height: 48%; }
-
-canvas[id$="pie"] {
-  margin: 15px; }
+    #charts > div > * {
+      height: 200px;
+      width: 100%;
+      margin-left: 20px;
+      border: 1px solid #3147fd;
+      border-radius: 3px;
+      padding: 20px; }
 
 #info-ul {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  font-size: 24px; }
-  #info-ul li {
-    padding-left: 20px; }
-
-section[id$="graph-container"] {
-  float: right;
-  width: 60%;
-  height: 420px;
-  width: 800px; }
-  section[id$="graph-container"] canvas[id$="graph"] {
-    margin: 20px; }
-
-#bar {
-  margin-top: 100px;
-  width: 100%;
-  height: 80px;
-  background-color: #fff;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  color: #1990FF; }
-  #bar h1 {
-    font-size: 50px;
-    font-weight: 700; }
-  #bar ul {
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    font-weight: 700; }
-    #bar ul h2:last-child {
-      margin-left: 40px; }
-  #bar .selected {
-    color: #1ddb33;
-    padding-bottom: 4px;
-    border-bottom: 3px solid #1ddb33; }
-
-#cost-container .icon-list, #save-container .icon-list {
-  display: flex;
-  float: left;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 680px;
-  margin-left: 50px;
-  width: 180px; }
-  #cost-container .icon-list li, #save-container .icon-list li {
-    height: 150px;
-    width: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: #fff;
-    box-shadow: 5px 5px 5px lightblue; }
-#cost-container li:hover, #save-container li:hover {
-  box-shadow: 5px 5px 15px lightblue;
-  cursor: pointer; }
-  #cost-container li:hover img:hover, #save-container li:hover img:hover {
-    height: 100px;
-    width: 100px; }
-
-.cost-container #charts, .save-container #charts {
-  float: right; }
-  .cost-container #charts > div, .save-container #charts > div {
-    float: right; }
-
-#example-graph-container {
-  float: left; }
+  font-size: 24px;
+  font-weight: 700;
+  margin: 20px; }
+  #info-ul li:first-of-type {
+    color: #bb86fc; }
+  #info-ul li:last-of-type {
+    color: #03dac5; }
 
 /*# sourceMappingURL=style.css.map */

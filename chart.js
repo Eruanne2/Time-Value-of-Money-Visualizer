@@ -5,7 +5,11 @@ style = {
   accentYellow: '#F6FF07',
   backgroundGreen: '#F0FFF0',
   lineBlue: '#253C5B',
-  font: "'Hind Siliguri', sans-serif"
+  purple: '#bb86fc',
+  blue: '#3700b3',
+  teal: '#03dac5',
+  red: '#cf6679',
+  font: "'Cairo', sans-serif"
 }
 
 var formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
@@ -48,20 +52,20 @@ const createGraphs = (principal, dataByMonth, whichGraph) => {
     datasets: [{
       label: 'Principal',
       data: [allData.principalData[0]],
-      borderColor: style.accentYellow,
-      backgroundColor: style.accentYellow,
+      borderColor: style.purple,
+      backgroundColor: style.purple,
       fill: true
     }, {
       label: 'Payments',
       data: [allData.paymentsData[0]],
-      borderColor: style.mainBlue,
-      backgroundColor: style.mainBlue,
+      borderColor: style.blue,
+      backgroundColor: style.blue,
       fill: true
     }, {
       label: 'Interest',
       data: [allData.interestData[0]],
-      borderColor: style.mainGreen,
-      backgroundColor: style.mainGreen,
+      borderColor: style.teal,
+      backgroundColor: style.teal,
       fill: true
     }],
     animations: {
@@ -146,7 +150,7 @@ const createGraphs = (principal, dataByMonth, whichGraph) => {
     datasets: [{
       label: 'Total Balance',
       data: [totalInterest.toFixed(2), totalPayments.toFixed(2), principal.toFixed(2)],
-      backgroundColor: [style.mainGreen, style.mainBlue, style.accentYellow]
+      backgroundColor: [style.teal, style.blue, style.purple]
     }]
   };
 

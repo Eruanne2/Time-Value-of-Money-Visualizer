@@ -4,29 +4,22 @@ $accent-blue: #00EDFF;
 $accent-yellow: #F6FF07;
 $background-green: #F0FFF0;
 $line-blue: #253C5B;
-$font: 'Hind Siliguri', sans-serif;
+
+$purple: #bb86fc;
+$blue: #3700b3;
+$teal: #03dac5;
+$red: #cf6679;
+
+$font: 'Cairo', sans-serif;
 
 html {
   font-family: $font;
-  color: $line-blue;
-  background: rgb(252,255,172);
-  background: radial-gradient(circle, rgba(252,255,172,1) 0%, rgba(184,255,224,1) 62%);
-  height: 1450px;
+  color: $blue;
+  background-color: #000;
 }
 
 .hidden {
   display: none;
-}
-
-.invisible {
-  opacity: 0;
-}
-
-#triangle {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  z-index: -1;
 }
 
 #main-header {
@@ -41,22 +34,44 @@ html {
 
 main {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
-
 
 
 #form-container {
-  float: right;
-  width: 24%;
+  width: 20%;
+  margin-left: 50px;
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+#tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: $purple;
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h2.not-selected {
+    color: #140043;
+  }
+
+  h2:hover {
+    cursor: pointer;
+  }
 }
 
 form {
-  position: absolute;
-  margin-left: -40%;
+  color: $teal;
+  height: 462px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-evenly;
 
   label {
     margin-top: 20px;
@@ -65,34 +80,39 @@ form {
     font-weight: 500;
 
     span.error {
-      color: rgb(197, 22, 22);
+      color: $red;
     }
   }
   
   input, select, #interest-container {
-    height: 26px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 0 10px lightblue;
+    background-color: #000;
+    color: $purple;
+    border: 1px solid $blue;
+    border-top: none;
+    border-right: none;
+    padding: 5px;
+    padding-left: 8px;
     font-family: $font;
     font-size: 16px;
-    padding-left: 10px;
   }
 
   input:focus {
     outline: none;
   }
 
-  // hide arrows for number inputs
-  // input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-  //   -webkit-appearance: none;
-  //   margin: 0;
-  // }
+  #present-value-input, #future-value-input {
+    width: 190px;
+  }
 
-  // input[type=number] {
-  //   -moz-appearance: textfield;
-  // }
+//   // hide arrows for number inputs
+//   // input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+//   //   -webkit-appearance: none;
+//   //   margin: 0;
+//   // }
+
+//   // input[type=number] {
+//   //   -moz-appearance: textfield;
+//   // }
 
   #interest-container {
     width: 85px;
@@ -103,7 +123,7 @@ form {
       width: 60%;
       padding: 0;
       background-color: transparent;
-      box-shadow: 0 0 0;
+      border: none;
     }
     p {
       display: inline;
@@ -114,74 +134,60 @@ form {
     width: 60px;
   }
 
-  select {
-    font-family: $font;
-    height: 28px;
-    margin-left: 5px;
+  #btn-container {
+    
+    #clear-btn, #calculate-btn {
+      background: transparent;
+      font-family: $font;
+      font-weight: 700;
+      font-size: 16px;
+      color: $red;
+      border: none;
+      margin-top: 10px;
+      width: 50px;
+      text-align: left;
+      margin-right: 60px;
+    }
+
+    #calculate-btn {
+      color: $blue;
+    }
+
   }
 
-  .go {
-    background: transparent;
-    border: none;
-    color: $main-blue;
-    font-size: 20px;
-    font-family: $font;
-    font-weight: 700;
-  }
-
-  #present-value-div, #future-value-div {
-    box-sizing: border-box;
-    padding-left: 80px;
-  }
-
-  #clear-btn {
-    background: transparent;
-    font-family: $font;
-    font-weight: 700;
-    font-size: 16px;
-    color: $main-blue;
-    border: 2px solid $main-blue;
-    border-radius: 10px;
-    width: 75px;
-    padding: 2px;
-    margin-top: 20px;
-  }
-
-  button:hover {
-    cursor: pointer;
-  }
 }
 
 #charts {
-  float: left;
-  margin-top: 30px;
-  margin-left: 3%;
-  width: 74%;
-  height: 420px;
+  display: flex;
+  width: 70%;
+  margin-right: 50px;
+
+  #graph-container {
+    width: 70%;
+    height: 462px;
+    border: 1px solid #3147fd;
+    border-radius: 3px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+  }
 
   > div {
-    float: left;
-    width: 29%;
-    height: 100%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
+    > * {
+      height: 200px;
+      width: 100%;
+      margin-left: 20px;
+      border: 1px solid #3147fd;
+      border-radius: 3px;
+      padding: 20px;
+    }
   }
-}
-
-section[id$="graph-container"], section[id$="pie-container"], #info-ul {
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px lightblue;
-  background-color: #ffffff;
-}
-
-section[id$="pie-container"], #info-ul {
-  width: 100%;
-  height: 48%;
-}
-
-canvas[id$="pie"] {
-  margin: 15px;
+  
 }
 
 #info-ul {
@@ -189,100 +195,14 @@ canvas[id$="pie"] {
   flex-direction: column;
   justify-content: space-around;
   font-size: 24px;
-  li {
-    padding-left: 20px;
-  }
-}
-
-section[id$="graph-container"] {
-  float: right;
-  width: 60%;
-  height: 420px;
-  width: 800px;
-
-  canvas[id$="graph"] {
-    margin: 20px;
-  }
-}
-
-
-
-#bar {
-  margin-top: 100px;
-  width: 100%;
-  height: 80px;
-  background-color: #fff;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  color: $main-blue;
-
-  h1 {
-    font-size: 50px;
-    font-weight: 700;
+  font-weight: 700;
+  margin: 20px;
+  
+  li:first-of-type {
+    color: $purple;
   }
 
-  ul {
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    font-weight: 700;
-
-    h2:last-child {
-      margin-left: 40px;
-    }
+  li:last-of-type {
+    color: $teal;
   }
-
-  .selected {
-    color: $main-green;
-    padding-bottom: 4px;
-    border-bottom: 3px solid $main-green
-  }
-
-}
-
-#cost-container, #save-container {
-  .icon-list {
-    display: flex;
-    float: left;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 680px;
-    margin-left: 50px;
-    width: 180px;
-    
-    li {
-      height: 150px;
-      width: 150px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      background-color: #fff;
-      box-shadow: 5px 5px 5px lightblue;
-    }
-  }
-
-  li:hover {
-    box-shadow: 5px 5px 15px lightblue;
-    cursor: pointer;
-
-    img:hover {
-      height: 100px;
-      width: 100px;
-    }
-  }
-}
-
-
-.cost-container #charts, .save-container #charts {
-  float: right;
-
-  > div {
-    float: right;
-  }
-}
-
-#example-graph-container {
-  float: left;
 }
