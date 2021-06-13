@@ -1,5 +1,7 @@
 # Time-Value-of-Money-Visualizer
 
+Check out the live version [here](https://eruanne2.github.io/Time-Value-of-Money-Visualizer/)!
+
 ## Background
 The Time Value of Money (TVM) calculator is a common tool used to calculate the effects of compounding interest on a monetary balance. While there are many variations depending on the company that offers it and the type of user that is expected to use it, there are 6 basic input fields that most TVM calculators share.
 * the interest rate
