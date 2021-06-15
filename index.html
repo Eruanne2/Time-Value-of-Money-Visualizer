@@ -24,12 +24,12 @@
         <h2 id='pv-tab' class='not-selected'>PRESENT VALUE</h2>
       </div>
       <form>
-        <label for='present-value-input' id='pv-label' class='hidden'><span id='present-value-error' class='error hidden'>REQUIRED</span> Present Value</label>
-        <input id='present-value-input' type='text' class='hidden'/>
+        <label for='present-value-input' id='pv-label'><span id='present-value-error' class='error hidden'>REQUIRED</span> Present Value</label>
+        <input id='present-value-input' type='text' autocomplete='off'/>
 
         <label for='term-input'><span id='term-length-error' class='error hidden'>REQUIRED</span> Term </label>
         <div id='term-input-holder'>
-          <input id='term-text-input' type='text'/>
+          <input id='term-text-input' type='text' autocomplete='off'/>
           <select id='term-select-input'>
             <option value='12'>years</option>
             <option value='1'>months</option>
@@ -38,7 +38,7 @@
 
         <label for='interest-input'><span id='interest-error' class='error hidden'>REQUIRED</span> Annual Interest Rate </label>
         <div id='interest-container'>
-          <input id='interest-input' type='text'/>
+          <input id='interest-input' type='text' autocomplete='off'/>
           <p>%</p>
         </div>
 
@@ -53,11 +53,11 @@
 
         <label for='payment-input'> Monthly Payment Amount </label>
         <div>
-          <input id='payment-input' type='text'/>
+          <input id='payment-input' type='text' autocomplete='off'/>
         </div>
 
-        <label for='future-value-input' id='fv-label'><span id='future-value-error' class='error hidden'>REQUIRED</span> Future Value </label>
-        <input id='future-value-input' type='text'/>
+        <label for='future-value-input' id='fv-label' class='hidden'><span id='future-value-error' class='error hidden'>REQUIRED</span> Future Value </label>
+        <input id='future-value-input' type='text' class='hidden' autocomplete='off'/>
 
         <div id='btn-container'>
           <button id='clear-btn'>CLEAR</button>
