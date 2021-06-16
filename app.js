@@ -1,3 +1,4 @@
+var formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
 // DOM elements
 const pvTab = document.getElementById('pv-tab');
@@ -10,14 +11,13 @@ const compoundsSelect = document.getElementById('compounds-select');
 const paymentInput = document.getElementById('payment-input');
 const futureValueInput = document.getElementById('future-value-input');
 const calculateBtn = document.getElementById('calculate-btn');
-const displayFV = document.getElementById('display-fv');
-const displayPV = document.getElementById('display-pv');
+const displayOutput = document.getElementById('display-output');
 const errors = {
   presentValue: document.getElementById('present-value-error'),
   termLength: document.getElementById('term-length-error'),
   interestRate: document.getElementById('interest-error'),
   futureValue: document.getElementById('future-value-error')
-}
+};
 
 // mock state to store values
 let mockState = {
@@ -46,26 +46,9 @@ const handleClear = e => {
   compoundsSelect.value = '12';
   paymentInput.value = '';
   futureValueInput.value = '';
+  displayOutput.innerText = '';
 };
 
-const resetPage = e => {
-  e.preventDefault();
-  handleClear(new Event('click'));
-}
-
-const toggleTab = e => {
-  if (costHeader.classList.contains('selected')) {
-    costHeader.classList.remove('selected');
-    document.getElementById('cost-container').classList.add('hidden');
-    saveHeader.classList.add('selected');
-    document.getElementById('save-container').classList.remove('hidden');
-  } else {
-    saveHeader.classList.remove('selected');
-    document.getElementById('save-container').classList.add('hidden');
-    costHeader.classList.add('selected');
-    document.getElementById('cost-container').classList.remove('hidden');
-  }
-}
 
 // link inputs and values
 const getValuesFromInput = () => {
@@ -78,30 +61,35 @@ const getValuesFromInput = () => {
   return mockState;
 }
 
+
 // toggle tabs
 const openPVTab = e => {
-  calculateBtn.removeEventListener('click', calculateFutureValue);
-  calculateBtn.addEventListener('click', calculatePresentValue);
+  calculateBtn.removeEventListener('click', calculateFV);
+  calculateBtn.addEventListener('click', calculatePV);
   presentValueInput.classList.add('hidden');
   document.getElementById('pv-label').classList.add('hidden');
   futureValueInput.classList.remove('hidden');
   document.getElementById('fv-label').classList.remove('hidden');
   pvTab.classList.remove('not-selected')
   fvTab.classList.add('not-selected')
+  displayOutput.innerText = '';
 }
 const openFVTab = e => {
-  calculateBtn.removeEventListener('click', calculatePresentValue);
-  calculateBtn.addEventListener('click', calculateFutureValue);
+  calculateBtn.removeEventListener('click', calculatePV);
+  calculateBtn.addEventListener('click', calculateFV);
   presentValueInput.classList.remove('hidden');
   document.getElementById('pv-label').classList.remove('hidden');
   futureValueInput.classList.add('hidden');
   document.getElementById('fv-label').classList.add('hidden');
   pvTab.classList.add('not-selected')
   fvTab.classList.remove('not-selected')
+  displayOutput.innerText = '';
 }
 
-// calculations
-const calculatePresentValue = e => {
+
+
+// calculations and graph creation
+const calculatePV = e => {
   e.preventDefault();
 
   // check that the proper field are filled in - display errors
@@ -113,41 +101,9 @@ const calculatePresentValue = e => {
   if (errorsPresent) return;
   else Object.values(errors).forEach(err => err.classList.add('hidden'));
 
-  // calculate present value
-  vals = getValuesFromInput();
+  // calculations
+  let vals = getValuesFromInput();
   vals.pv = 0;
-
-  calculatePV(vals, 'main')
-  presentValueInput.value = mockState.pv.toFixed(2); // display present value to user
-}
-
-
-const handleFV = e => {
-  e.preventDefault();
-  // check that the proper field are filled in - display errors
-  let errorsPresent = false;
-  if (presentValueInput.value === '') { errors["presentValue"].classList.remove('hidden'); errorsPresent = true; }
-  if (parseInt(presentValueInput.value) === 0) { errors["presentValue"].classList.remove('hidden'); errorsPresent = true; }
-  if (termTextInput.value === '') { errors["termLength"].classList.remove('hidden'); errorsPresent = true; }
-  if (interestInput.value === '') { errors["interestRate"].classList.remove('hidden'); errorsPresent = true; }
-  if (errorsPresent) return;
-  else Object.values(errors).forEach(err => err.classList.add('hidden'));
-
-  // display graph
-  document.querySelector('form').classList.add('slide');
-  document.getElementById('charts').classList.remove('invisible');
-  document.getElementById('charts').classList.add('fade');
-
-  // calculate value and fill in field
-  vals = getValuesFromInput();
-  vals.fv = 0;
-  claculateFV(vals, 'main');
-
-  futureValueInput.value = mockState.fv.toFixed(2); // display future value to user
-};
-
-// calculations and graph creation
-const calculatePV = (vals, whichGraph) => {
   let dataByMonth = [];
 
   for (let count = vals.t; count >= 1; count--){ // iterate through each month, starting with the last
@@ -160,7 +116,7 @@ const calculatePV = (vals, whichGraph) => {
     dataByMonth.unshift({ // push this month's balances to the beginning of the array
       total: vals.fv + parseFloat(vals.pmt),
       payments: (count) * vals.pmt,
-      interest: vals.fv - vals.pv // this is not be cumulative
+      interest: vals.fv - vals.pv // this is not cumulative
     });
     vals.fv = vals.pv; // set the previous month's ending balance to this month's starting balance
   }
@@ -169,15 +125,14 @@ const calculatePV = (vals, whichGraph) => {
     dataByMonth[i].interest += dataByMonth[i-1].interest;
   };
   
-  displayPV.value = `Present Value: ${vals.pv.toFixed(2)}`; // display present value to user
-  displayPV.classList.remove('hidden');
-  displayFV.classList.add('hidden');
+  displayOutput.innerText = `Present Value: ${formatter.format(vals.pv)}`; // display present value to user
   let principal = vals.pv;
   
   createGraphs(principal, dataByMonth);
 }
 
-const calculateFutureValue = e => {
+
+const calculateFV = e => {
   e.preventDefault();
   // check that the proper field are filled in - display errors
   let errorsPresent = false;
@@ -205,16 +160,14 @@ const calculateFutureValue = e => {
     vals.pv = vals.fv; // set the next month's starting balance to this month's ending balance
   }
 
-  displayFV.value = `Future Value: ${vals.fv.toFixed(2)}`; // display future value to user
-  displayFV.classList.remove('hidden');
-  displayPV.classList.add('hidden');
+  displayOutput.innerText = `Future Value: ${formatter.format(vals.fv)}`; // display future value to user
 
   // trigger graph
   createGraphs(principal, dataByMonth);
 };
 
 // add event listeners
-document.getElementById('main-header').addEventListener('click', resetPage);
+document.getElementById('main-header').addEventListener('click', handleClear);
 presentValueInput.addEventListener('input', removeError('presentValue'));
 pvTab.addEventListener('click', openPVTab);
 termTextInput.addEventListener('input', removeError('termLength'));
@@ -222,4 +175,4 @@ interestInput.addEventListener('input', removeError('interestRate'));
 futureValueInput.addEventListener('input', removeError('futureValue'));
 fvTab.addEventListener('click', openFVTab);
 document.getElementById('clear-btn').addEventListener('click', handleClear);
-calculateBtn.addEventListener('click', calculateFutureValue);
+calculateBtn.addEventListener('click', calculateFV);

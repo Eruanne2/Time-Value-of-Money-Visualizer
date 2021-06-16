@@ -4,23 +4,19 @@ html {
   background-color: #000; }
 
 .hidden {
-  display: none; 
-}
+  display: none; }
 
 #main-header {
   text-align: center;
   font-size: 50px;
-  margin: 60px; 
-}
+  margin: 60px; }
 
 #main-header:hover, #cost-header, #save-header {
-  cursor: pointer; 
-}
+  cursor: pointer; }
 
 main {
   display: flex;
-  justify-content: space-between; 
-}
+  justify-content: space-between; }
 
 #form-container {
   width: 20%;
@@ -93,6 +89,9 @@ form {
     margin-right: 60px; }
   form #btn-container #calculate-btn {
     color: #3700b3; }
+  form #display-output {
+    padding-top: 10px;
+    font-size: 18px; }
 
 #charts {
   display: flex;
