@@ -89,6 +89,9 @@ form {
     margin-right: 60px; }
   form #btn-container #calculate-btn {
     color: #3700b3; }
+  form #display-output {
+    padding-top: 10px;
+    font-size: 18px; }
 
 #charts {
   display: flex;

@@ -1,3 +1,4 @@
+var formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
 // DOM elements
 const pvTab = document.getElementById('pv-tab');
@@ -10,8 +11,7 @@ const compoundsSelect = document.getElementById('compounds-select');
 const paymentInput = document.getElementById('payment-input');
 const futureValueInput = document.getElementById('future-value-input');
 const calculateBtn = document.getElementById('calculate-btn');
-const displayFV = document.getElementById('display-fv');
-const displayPV = document.getElementById('display-pv');
+const displayOutput = document.getElementById('display-output');
 const errors = {
   presentValue: document.getElementById('present-value-error'),
   termLength: document.getElementById('term-length-error'),
@@ -46,6 +46,7 @@ const handleClear = e => {
   compoundsSelect.value = '12';
   paymentInput.value = '';
   futureValueInput.value = '';
+  displayOutput.innerText = '';
 };
 
 
@@ -71,6 +72,7 @@ const openPVTab = e => {
   document.getElementById('fv-label').classList.remove('hidden');
   pvTab.classList.remove('not-selected')
   fvTab.classList.add('not-selected')
+  displayOutput.innerText = '';
 }
 const openFVTab = e => {
   calculateBtn.removeEventListener('click', calculatePV);
@@ -81,6 +83,7 @@ const openFVTab = e => {
   document.getElementById('fv-label').classList.add('hidden');
   pvTab.classList.add('not-selected')
   fvTab.classList.remove('not-selected')
+  displayOutput.innerText = '';
 }
 
 
@@ -122,9 +125,7 @@ const calculatePV = e => {
     dataByMonth[i].interest += dataByMonth[i-1].interest;
   };
   
-  displayPV.value = `Present Value: ${vals.pv.toFixed(2)}`; // display present value to user
-  displayPV.classList.remove('hidden');
-  displayFV.classList.add('hidden');
+  displayOutput.innerText = `Present Value: ${formatter.format(vals.pv)}`; // display present value to user
   let principal = vals.pv;
   
   createGraphs(principal, dataByMonth);
@@ -159,9 +160,7 @@ const calculateFV = e => {
     vals.pv = vals.fv; // set the next month's starting balance to this month's ending balance
   }
 
-  displayFV.value = `Future Value: ${vals.fv.toFixed(2)}`; // display future value to user
-  displayFV.classList.remove('hidden');
-  displayPV.classList.add('hidden');
+  displayOutput.innerText = `Future Value: ${formatter.format(vals.fv)}`; // display future value to user
 
   // trigger graph
   createGraphs(principal, dataByMonth);
