@@ -81,7 +81,7 @@ const createGraphs = (principal, dataByMonth) => {
       scales: {
         y: {
           min: 0,
-          max: Math.ceil(principal * 4 / 100) * 100,
+          max: (principal + totalInterest + totalPayments) * 1.2,
           ticks: {
             callback: val => formatter.format(val).slice(0, -3)
             }
