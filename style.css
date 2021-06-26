@@ -3,6 +3,9 @@ html {
   color: #3700b3;
   background-color: #000; }
 
+body {
+  overflow-x: hidden; }
+
 .hidden {
   display: none; }
 
@@ -40,7 +43,7 @@ main {
   #tabs h2 {
     font-size: 20px; }
   #tabs h2.not-selected {
-    color: #140043; }
+    color: #44027a; }
   #tabs h2:hover {
     cursor: pointer; }
 

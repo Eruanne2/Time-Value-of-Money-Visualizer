@@ -10,6 +10,10 @@ html {
   background-color: #000;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .hidden {
   display: none;
 }
@@ -18,7 +22,6 @@ html {
   display: flex;
   justify-content: space-between;
   width: 200px;
-  // float: right;
   position: absolute; 
   top: 10px;
   right: 0;
@@ -60,7 +63,7 @@ main {
   }
 
   h2.not-selected {
-    color: #140043;
+    color: #44027a;
   }
 
   h2:hover {
