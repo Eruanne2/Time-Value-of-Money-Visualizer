@@ -111,8 +111,9 @@ form {
   #charts #graph-container {
     width: 70%;
     height: 462px;
+    border-radius: 7px;
     border: 1px solid #3147fd;
-    border-radius: 3px;
+    box-shadow: 0 0 10px #3147fd;
     padding: 20px;
     display: flex;
     align-items: center; }
@@ -125,8 +126,9 @@ form {
       height: 200px;
       width: 100%;
       margin-left: 20px;
+      border-radius: 7px;
       border: 1px solid #3147fd;
-      border-radius: 3px;
+      box-shadow: 0 0 10px #3147fd;
       padding: 20px; }
 
 #info-ul {
