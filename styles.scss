@@ -93,6 +93,7 @@ form {
     background-color: #000;
     color: $purple;
     border: 1px solid $blue;
+    box-shadow: -2px 2px 2px #3141cc;
     border-top: none;
     border-right: none;
     padding: 5px;
@@ -109,16 +110,6 @@ form {
     width: 190px;
   }
 
-//   // hide arrows for number inputs
-//   // input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-//   //   -webkit-appearance: none;
-//   //   margin: 0;
-//   // }
-
-//   // input[type=number] {
-//   //   -moz-appearance: textfield;
-//   // }
-
   #interest-container {
     width: 85px;
     padding-top: 1px;
@@ -129,6 +120,7 @@ form {
       padding: 0;
       background-color: transparent;
       border: none;
+      box-shadow: none;
     }
     p {
       display: inline;
