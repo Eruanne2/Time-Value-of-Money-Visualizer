@@ -9,6 +9,26 @@ body {
 .hidden {
   display: none; }
 
+#modal-background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: .8; }
+
+#modal {
+  position: absolute;
+  background-color: black;
+  color: #3700b3;
+  height: 80%;
+  width: 40%;
+  border: 1px solid #3700b3;
+  box-shadow: -2px 2px 2px #3141cc;
+  margin-left: 30%; }
+  #modal #close-btn {
+    font-weight: 700;
+    cursor: pointer; }
+
 #link-container {
   display: flex;
   justify-content: space-between;

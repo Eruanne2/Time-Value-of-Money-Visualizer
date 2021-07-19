@@ -49,6 +49,11 @@ const handleClear = e => {
   displayOutput.innerText = '';
 };
 
+const closeModal = e => {
+  document.getElementById('modal').classList.add('hidden');
+  document.getElementById('modal-background').classList.add('hidden');
+}
+
 
 // link inputs and values
 const getValuesFromInput = () => {
@@ -176,3 +181,5 @@ futureValueInput.addEventListener('input', removeError('futureValue'));
 fvTab.addEventListener('click', openFVTab);
 document.getElementById('clear-btn').addEventListener('click', handleClear);
 calculateBtn.addEventListener('click', calculateFV);
+
+document.getElementById('close-btn').addEventListener('click', closeModal)
