@@ -30,15 +30,27 @@ body {
   position: absolute;
   background-color: black;
   color: $blue;
-  height: 80%;
+  height: 90%;
   width: 40%;
   border: 1px solid $blue;
   box-shadow: -2px 2px 2px #3141cc;
   margin-left: 30%;
 
-  #close-btn {
-    font-weight: 700;
-    cursor: pointer;
+  > div:first-of-type {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    
+    h1 {
+      font-size: 30px;
+      margin: 10px 0 0 20px;
+    }
+    
+    #close-btn {
+      font-weight: 700;
+      font-size: 40px;
+      cursor: pointer;
+    }
   }
 }
 

@@ -20,14 +20,22 @@ body {
   position: absolute;
   background-color: black;
   color: #3700b3;
-  height: 80%;
+  height: 90%;
   width: 40%;
   border: 1px solid #3700b3;
   box-shadow: -2px 2px 2px #3141cc;
   margin-left: 30%; }
-  #modal #close-btn {
-    font-weight: 700;
-    cursor: pointer; }
+  #modal > div:first-of-type {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px; }
+    #modal > div:first-of-type h1 {
+      font-size: 30px;
+      margin: 10px 0 0 20px; }
+    #modal > div:first-of-type #close-btn {
+      font-weight: 700;
+      font-size: 40px;
+      cursor: pointer; }
 
 #link-container {
   display: flex;
