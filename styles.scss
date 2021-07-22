@@ -30,7 +30,7 @@ body {
   position: absolute;
   background-color: black;
   color: $blue;
-  height: 90%;
+  height: 70%;
   width: 40%;
   border: 1px solid $blue;
   box-shadow: -2px 2px 2px #3141cc;
@@ -39,18 +39,34 @@ body {
   > div:first-of-type {
     display: flex;
     justify-content: space-between;
-    margin: 10px;
+    margin: 0 10px;
     
     h1 {
+      color: $teal;
       font-size: 30px;
-      margin: 10px 0 0 20px;
+      margin: 20px 0 0 20px;
     }
     
     #close-btn {
       font-weight: 700;
       font-size: 40px;
       cursor: pointer;
+      color: $red;
     }
+  }
+
+  p {
+    font-size: 26px;
+    padding: 10px;
+    margin: 0 20px;
+  }
+
+  em {
+    color: $purple;
+    text-transform: uppercase;
+    font-size: 28px;
+    font-weight: 700;
+    padding: 0 5px;
   }
 }
 
