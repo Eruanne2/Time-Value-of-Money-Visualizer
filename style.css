@@ -9,6 +9,46 @@ body {
 .hidden {
   display: none; }
 
+#modal-background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: .8; }
+
+#modal {
+  position: absolute;
+  background-color: black;
+  color: #3700b3;
+  height: 70%;
+  width: 40%;
+  border: 1px solid #3700b3;
+  box-shadow: -2px 2px 2px #3141cc;
+  margin-left: 30%; }
+  #modal > div:first-of-type {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px; }
+    #modal > div:first-of-type h1 {
+      color: #03dac5;
+      font-size: 30px;
+      margin: 20px 0 0 20px; }
+    #modal > div:first-of-type #close-btn {
+      font-weight: 700;
+      font-size: 40px;
+      cursor: pointer;
+      color: #cf6679; }
+  #modal p {
+    font-size: 26px;
+    padding: 10px;
+    margin: 0 20px; }
+  #modal em {
+    color: #bb86fc;
+    text-transform: uppercase;
+    font-size: 28px;
+    font-weight: 700;
+    padding: 0 5px; }
+
 #link-container {
   display: flex;
   justify-content: space-between;
